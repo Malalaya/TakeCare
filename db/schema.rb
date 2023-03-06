@@ -10,9 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_06_144310) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_06_153134) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "families", force: :cascade do |t|
+    t.string "godparents"
+    t.string "pets_care"
+    t.string "plants_care"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_families_on_user_id"
+  end
+
+  create_table "flowers", force: :cascade do |t|
+    t.string "name"
+    t.string "picture_url"
+    t.bigint "funeral_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["funeral_id"], name: "index_flowers_on_funeral_id"
+  end
+
+  create_table "funeral_homes", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "funeral_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["funeral_id"], name: "index_funeral_homes_on_funeral_id"
+  end
+
+  create_table "funerals", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_funerals_on_user_id"
+  end
+
+  create_table "guests", force: :cascade do |t|
+    t.text "guest_list"
+    t.bigint "funeral_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["funeral_id"], name: "index_guests_on_funeral_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +71,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_144310) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "venues", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "funeral_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["funeral_id"], name: "index_venues_on_funeral_id"
+  end
+
+  add_foreign_key "families", "users"
+  add_foreign_key "flowers", "funerals"
+  add_foreign_key "funeral_homes", "funerals"
+  add_foreign_key "funerals", "users"
+  add_foreign_key "guests", "funerals"
+  add_foreign_key "venues", "funerals"
 end
