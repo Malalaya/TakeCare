@@ -1,1 +1,16 @@
-<h1>Funerals index</h1>
+
+<% @users.each do |plant| %>
+  <div>
+    <h2><%= user.name, user_path(user) %></h2>
+        <% if user.photo.attached?  %>
+        <%= cl_image_tag user.photo.key, crop: :fill %>
+        <% else %>
+          <img src="<%= user.url %>" style="width: 100%">
+        <% end %>
+      <p><%= user.description %></p>
+      <p><%= user.city %></p>
+      <p><%= user.email %></p>
+      <%= link_to "Edit", edit_user_path(user), class:"button-blue" %>
+      <%= link_to "Delete", user_path(user), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class:"button-small" %>
+  </div>
+  <% end %>
