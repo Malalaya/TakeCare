@@ -1,0 +1,8 @@
+.form-control {
+  border: 1px solid $blue;
+  width: 50%;
+}
+
+.form-control .is-valid {
+  border-color: $blue;
+}
