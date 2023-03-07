@@ -1,25 +1,11 @@
 class FuneralsController < ApplicationController
 
-  def index
-    @funerals = Funeral.all
-  end
-
   def show
     @funeral = Funeral.find(params[:id])
   end
 
-  def new
-    @funeral = Funeral.new
-  end
-
-  def create
-    @funeral = Funeral.new(funeral_params)
-    @funeral.user = current_user
-    if @funeral.save
-      redirect_to funeral_path(@funeral)
-    else
-      render :new
-    end
+  def my_funeral
+    @funeral = Funeral.find_or_create_by(user_id: current_user.id)
   end
 
   private

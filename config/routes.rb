@@ -12,4 +12,5 @@ Rails.application.routes.draw do
     resources :funeral_homes, only: %i[index new create]
   end
   resources :users, only: [:show]
+  get "my_funeral", to: "funerals#my_funeral"
 end

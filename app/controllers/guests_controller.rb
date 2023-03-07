@@ -2,10 +2,6 @@ class GuestsController < ApplicationController
   before_action :set_funeral, only: %i[index new create]
   before_action :set_user, only: %i[index new create]
 
-  def index
-    @guests = Guest.funeral.all
-  end
-
   def new
     @guest = Guest.new
   end
@@ -18,6 +14,22 @@ class GuestsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+    @guest = Guest.find(params[:id])
+  end
+
+  def update
+    @guest = Guest.find(params[:id])
+    @guest.update(guest_params)
+    redirect_to funeral_path(@funeral)
+  end
+
+  def destroy
+    @guest = Guest.find(params[:id])
+    @guest.destroy
+    redirect_to funeral_path(@funeral)
   end
 
   private
