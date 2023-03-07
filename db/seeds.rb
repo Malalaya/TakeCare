@@ -22,3 +22,6 @@ require "faker"
   user.save
   Funeral.create(user: user)
 end
+
+User.first.avatar.attach(io: File.open(File.join(Rails.root,'app/assets/images/avatar.jpg')), filename: 'avatar.jpg')
+
