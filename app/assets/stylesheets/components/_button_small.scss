@@ -1,0 +1,26 @@
+.button-small {display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 51px;
+  height: 51px;
+  background: #ffffff;
+  box-shadow: 0px 4px 15px rgba(46, 46, 46, 0.15);
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: $blue;
+  text-decoration: none;
+  margin-top: 10px;
+  }
+
+  .button-small:hover {
+    background: $blue;
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: 0px 8px 30px rgba(46, 46, 46, 0.15);
+  }
