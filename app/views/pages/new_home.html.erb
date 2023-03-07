@@ -1,0 +1,16 @@
+<% content_for :mainpage do %>
+<%= render "components/banner" %>
+
+<div class="main-container">
+<h1>Visit your loved ones</h1>
+
+<div class="cards">
+  <% @users.each do |user| %>
+  <div class="card-category" >
+  <%= link_to "", user_path(user), class: "card-img", style: "background-image: url(#{user.avatar.attached? ? cl_image_path(user.avatar.key) : user.url})" %>
+  <%= user.name%>
+  </div>
+</div>
+
+</div>
+<% end %>
