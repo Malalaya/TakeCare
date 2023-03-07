@@ -1,0 +1,2 @@
+class FuneralHomesController < ApplicationController
+end
