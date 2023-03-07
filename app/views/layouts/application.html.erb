@@ -15,12 +15,10 @@
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
 
-    <% if content_for?(:subpage) %>
-      <div class="subpage-container">
-        <%= yield %>
-      </div>
+    <% if content_for?(:mainpage) %>
+      <%= yield(:mainpage) %>
     <% else %>
-      <div class="main-container">
+      <div class="subpage-container">
         <%= yield %>
       </div>
     <% end %>
