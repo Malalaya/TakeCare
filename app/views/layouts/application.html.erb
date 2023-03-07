@@ -10,9 +10,23 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
+  <body>
 
-    <%= yield %>
+    <%= render "shared/navbar" %>
+    <%= render "shared/flashes" %>
+
+    <% if content_for?(:subpage) %>
+      <div class="subpage-container">
+        <%= yield %>
+      </div>
+    <% else %>
+      <div class="main-container">
+        <%= yield %>
+      </div>
+    <% end %>
+
   </body>
 </html>
+
+<%# don´t forget! <% content_for :subpage %>
+<%# <% end %>
