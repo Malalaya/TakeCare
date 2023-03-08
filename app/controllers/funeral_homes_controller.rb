@@ -1,4 +1,5 @@
 class FuneralHomesController < ApplicationController
+  before_action :set_funeral, only: [:new, :create, :edit, :update, :destroy]
 
   def new
     @funeral_home = FuneralHome.new
@@ -7,7 +8,7 @@ class FuneralHomesController < ApplicationController
   def create
     @funeral_home = FuneralHome.new(funeral_home_params)
     if @funeral_home.save
-      redirect_to funeral_path(@funeral)
+      redirect_to my_funeral_path(@funeral)
     else
       render :new
     end
@@ -20,18 +21,35 @@ class FuneralHomesController < ApplicationController
   def update
     @funeral_home = FuneralHome.find(params[:id])
     @funeral_home.update(funeral_home_params)
-    redirect_to funeral_path(@funeral)
+    redirect_to my_funeral_path(@funeral)
   end
+
+  # def edit
+  #   @funeral_home = @funeral.funeral_home
+  # end
+
+  # def update
+  #   @funeral_home = @funeral.funeral_home
+  #   if @funeral_home.update(funeral_home_params)
+  #     redirect_to my_funeral_path(@funeral)
+  #   else
+  #     render :edit
+  #   end
+  # end
 
   def destroy
     @funeral_home = FuneralHome.find(params[:id])
     @funeral_home.destroy
-    redirect_to funeral_path(@funeral)
+    redirect_to my_funeral_path(@funeral)
   end
 
   private
 
   def funeral_home_params
     params.require(:funeral_home).permit(:name, :address, :funeral_id)
+  end
+
+  def set_funeral
+    @funeral = Funeral.find(params[:funeral_id])
   end
 end
