@@ -4,48 +4,113 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-.card-user > img {
-  height: 200px;
+.card-user .user-background img{
+  height: 250px;
   width: 100%;
   object-fit: cover;
 }
 
-.card-user h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
+
+.card-user .user-name{
+  position: absolute;
+  object-fit: cover;
+  left: 300px;
+  top: 30px;
+}
+
+
+.card-user .user-description{
+  position: absolute;
+  object-fit: cover;
+  left: 300px;
+  top: 90px;
+}
+
+.card-user .user-address{
+  position: absolute;
+  object-fit: cover;
+  left: 300px;
+  top: 130px;
+}
+
+.card-user .user-birthday{
+  position: absolute;
+  object-fit: cover;
+  left: 300px;
+  top: 150px;
+}
+
+.card-user .card-user-avatar-bordered img {
+  border-radius: 50%;
+  width: 150px;
+  position: absolute;
+  left: 100px;
+  top: -50px;
 }
 
 .card-user p {
   font-size: 12px;
   opacity: .7;
   margin: 0;
+  left: 300px;
 }
 
 
-.card-user .card-user-infos {
-  padding: 16px;
+
+.card-user-infos {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
-}
-
-.card-user-infos .card-user-user {
-  position: absolute;
-  right: 16px;
-  top: -20px;
-  width: 40px;
+  height: 200px;
 }
 
 .card-light-grey{
-  background-color: $light-gray;
-  display: flex;
-  position: relative;
-}
-
-.card-dark-grey{
   background-color: $dark-gray;
   display: flex;
   position: relative;
+  height: 200px;
+}
+
+.card-dark-grey{
+  background-color: $background;
+  display: flex;
+  position: relative;
+  height: 200px;
+}
+
+.card-dark-grey .health-button {
+  left: 300px;
+  top: 70px;
+  position: absolute;
+}
+
+.card-light-grey .funeral-button {
+  left: 300px;
+  position: absolute;
+  top: 70px;
+}
+
+.card-light-grey .will-button {
+  left: 300px;
+  position: absolute;
+  top: 130px;
+}
+
+.card-light-grey .edit-button {
+  right: 50px;
+  bottom: 50px;
+  position: absolute;
+}
+
+.card-dark-grey h2 {
+  left: 300px;
+  top: 24px;
+  position: absolute;
+}
+
+.card-light-grey h2 {
+  left: 300px;
+  top: 24px;
+  position: absolute;
 }
