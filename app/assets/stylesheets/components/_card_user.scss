@@ -37,3 +37,15 @@
   top: -20px;
   width: 40px;
 }
+
+.card-light-grey{
+  background-color: $light-gray;
+  display: flex;
+  position: relative;
+}
+
+.card-dark-grey{
+  background-color: $dark-gray;
+  display: flex;
+  position: relative;
+}

@@ -1,5 +1,4 @@
 <% content_for :mainpage do %>
-
 <div class="card-user">
   <div class="user-background">
     <% if @user.background_picture&.attached? %>
@@ -10,7 +9,7 @@
   </div>
 
   <div class="card-user-infos">
-    <div>
+    <div class="user-name">
       <h1><%= @user.name %> <%= @user.surname %></h1>
     </div>
     <div class="user-description">
@@ -19,8 +18,9 @@
     <div class="user-avatar card-user-avatar-bordered">
       <% if @user.avatar.attached? %>
         <%= cl_image_tag @user.avatar.key %>
+
       <% else %>
-        <%= image_tag("logo.png") %>
+        <%= image_tag("avatar.png") %>
       <% end %>
     </div>
     <div class="user-address">
@@ -34,6 +34,28 @@
     <div class="user-birthday">
       <p><strong>Birthday:</strong> <%= @user.birthday %></p>
     </div>
+  </div>
+</div>
+
+<div class= "card-dark-grey">
+  <h2>Take Care</h2>
+  <% if user_signed_in? && current_user.id == @user.id %>
+  <%= link_to "Health", health_path, class: "button-blue" %>
+  <% end %>
+</div>
+
+<div class= "card-light-grey">
+  <h2>Be Prepared</h2>
+  <div>
+    <% if user_signed_in? && current_user.id == @user.id %>
+    <%= link_to "Funeral", funeral_path, class: "button-blue" %>
+    <% end %>
+  </div>
+  <div>
+    <h1><%= @user.name %> <%= @user.surname %></h1>
+    <% if user_signed_in? && current_user.id == @user.id %>
+    <%= link_to "Informal Will", family-path, class: "button-blue" %>
+    <% end %>
   </div>
 </div>
 
