@@ -7,8 +7,9 @@
     <p>No photo available.</p>
   <% end %>
 </div>
-
+<p><strong>address:</strong> <%= @user.address %></p>
 <p><strong>Description:</strong> <%= @user.description %></p>
+<p><strong>birthday:</strong> <%= @user.birthday.date %></p>
 
 <% if user_signed_in? && current_user.id == @user.id %>
   <%= link_to "Edit Profile", edit_user_registration_path, class: "button" %>
