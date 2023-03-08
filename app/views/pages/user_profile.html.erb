@@ -1,5 +1,4 @@
-<div class="user-name">
-</div>
+<% content_for :mainpage do %>
 
 <div class="card-user">
   <div class="user-background">
@@ -40,4 +39,6 @@
 
 <% if user_signed_in? && current_user.id == @user.id %>
   <%= link_to "Edit Profile", edit_user_registration_path, class: "button-blue" %>
+<% end %>
+
 <% end %>
