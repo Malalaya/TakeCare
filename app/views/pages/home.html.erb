@@ -7,23 +7,23 @@
       <h1>View your loved ones</h1>
         <div class="cards">
 
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-            <h2><%= link_to "Mary", userprofile_path(1) %></h2>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_url("dad_avatar_image.jpg") %>">
+            <h2><%= link_to "Paul", userprofile_path(1) %></h2>
           </div>
 
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_url("grandma_avatar_image.jpg") %>">
             <h2>Paul</h2>
           </div>
 
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_url("mum_avatar_image.jpg") %>">
                 <h2>John</h2>
           </div>
 
-            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_url("sister_image_avatar.jpg") %>">
                 <h2>Miriam</h2>
           </div>
 
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_url("uncleMike_avatar_image.jpg") %>">
                 <h2>Lucy</h2>
           </div>
         </div>
@@ -35,5 +35,7 @@
         <%= link_to "Register now", new_user_session_path, class: "button-blue" %>
         <br>
     <% end %>
+    <%= render "components/cardssquare" %>
   </div>
+
 <% end %>
