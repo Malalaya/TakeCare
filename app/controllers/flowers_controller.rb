@@ -2,8 +2,8 @@ class FlowersController < ApplicationController
   before_action :set_funeral, only: [:new, :create, :edit, :update, :destroy]
 
   def new
-    @flower = Flower.new
     @funeral = Funeral.find(params[:funeral_id])
+    @flower = Flower.new
   end
 
   def create
@@ -17,7 +17,8 @@ class FlowersController < ApplicationController
   end
 
   def edit
-    @flower = Flower.find(params[:id])
+    @funeral = Funeral.find(params[:funeral_id])
+    @flower = Flower.find(params[:funeral_id])
   end
 
   def update

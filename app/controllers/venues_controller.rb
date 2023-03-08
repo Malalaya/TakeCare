@@ -6,6 +6,7 @@ class VenuesController < ApplicationController
 
   def create
     @venue = Venue.new(venue_params)
+    @venue.funeral = @funeral
     if @venue.save
       redirect_to my_funeral_path(@funeral)
     else

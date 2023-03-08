@@ -2,7 +2,7 @@
 
 <div class="button-container">
   <% if @flower.present? %>
-    <%= link_to @flower.name, edit_funeral_flower_path(@funeral) %>
+    <%= link_to "#{@flowers.name}", edit_funeral_flower_path(@funeral) %>
   <% else %>
     <%= link_to 'Add Flower', new_funeral_flower_path(@funeral) %>
   <% end %>

@@ -2,6 +2,10 @@ class FuneralsController < ApplicationController
 
   def show
     @funeral = Funeral.find(params[:id])
+    @flower = @funeral.flowers
+    @funeral_home = @funeral.funeral_homes
+    @guest = @funeral.guests
+    @venue = @funeral.venues
   end
 
   def my_funeral
