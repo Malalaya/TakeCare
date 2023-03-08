@@ -1,16 +1,35 @@
-<h1><%= @user.email %>'s Profile</h1>
+<div class="user-name">
+<h1><%= @user.name %> <%= @user.surname %></h1>
+</div>
 
-<div>
+<div class="user-background">
   <% if @user.avatar.attached? %>
     <%= image_tag(@user.avatar.variant(resize_to_limit: [300, 300])) %>
   <% else %>
-    <p>No photo available.</p>
+    <%= image_tag(logo.png(resize_to_limit: [300, 300])) %>
   <% end %>
 </div>
-<p><strong>address:</strong> <%= @user.address %></p>
+
+<div class="user-avatar">
+  <% if @user.avatar.attached? %>
+    <%= image_tag(@user.avatar.variant(resize_to_limit: [300, 300])) %>
+  <% else %>
+    <%= image_tag(logo.png(resize_to_limit: [300, 300])) %>
+  <% end %>
+</div>
+
+<div class="user-address">
+<p><strong>Address:</strong> <%= @user.address %></p>
+</div>
+
+<div class="user-description">
 <p><strong>Description:</strong> <%= @user.description %></p>
-<p><strong>birthday:</strong> <%= @user.birthday.date %></p>
+</div>
+
+<div class="user-birthday">
+<p><strong>Birthday:</strong> <%= @user.birthday %></p>
+</div>
 
 <% if user_signed_in? && current_user.id == @user.id %>
-  <%= link_to "Edit Profile", edit_user_registration_path, class: "button" %>
+  <%= link_to "Edit Profile", edit_user_registration_path, class: "button-blue" %>
 <% end %>
