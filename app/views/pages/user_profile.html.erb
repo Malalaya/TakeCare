@@ -2,8 +2,8 @@
 
 <div class="card-user">
   <div class="user-background">
-    <% if @user.background_picture.attached? %>
-      <%= cl_image_tag(@user.background_picture.key) %>
+    <% if @user.background_picture&.attached? %>
+      <%= cl_image_tag @user.background_picture.key %>
     <% else %>
       <%= image_tag("green_leaves.jpeg") %>
     <% end %>
@@ -18,7 +18,7 @@
     </div>
     <div class="user-avatar card-user-avatar-bordered">
       <% if @user.avatar.attached? %>
-        <%= cl_image_tag(@user.avatar.key) %>
+        <%= cl_image_tag @user.avatar.key %>
       <% else %>
         <%= image_tag("logo.png") %>
       <% end %>
