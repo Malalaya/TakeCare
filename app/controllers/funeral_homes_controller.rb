@@ -1,5 +1,5 @@
 class FuneralHomesController < ApplicationController
-  before_action :set_funeral, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_funeral, only: %i[show index new create edit update destroy]
 
   # def new
   #   @funeral_home = FuneralHome.new
@@ -14,6 +14,11 @@ class FuneralHomesController < ApplicationController
   #   end
   # end
 
+  def new
+    @funeral = Funeral.find(params[:funeral_id])
+    @funeral_home = FuneralHome.new
+  end
+
   def index
     @funeral_homes = FuneralHome.all
     @markers = @funeral_homes.geocoded.map do |funeral_home|
@@ -24,10 +29,6 @@ class FuneralHomesController < ApplicationController
         marker_html: render_to_string(partial: "marker", locals: {funeral_home: funeral_home})
       }
     end
-  end
-
-  def new
-    @funeral_home = FuneralHome.new
   end
 
   def create
@@ -41,13 +42,19 @@ class FuneralHomesController < ApplicationController
   end
 
   def edit
-    @funeral_home = FuneralHome.find(params[:funeral_id])
+    @funeral = Funeral.find(params[:funeral_id])
+    # @funeral_home = FuneralHome.find(params[:funeral_id])~
+    @funeral_home = @funeral.funeral_home
+    # @funeral_home = @funeral.funeral_home.first
   end
 
   def update
-    @funeral_home = FuneralHome.find(params[:funeral_id])
-    @funeral_home.update(funeral_home_params)
-    redirect_to my_funeral_path(@funeral)
+    @funeral_home = FuneralHome.find(params[:id])
+    if @funeral_home.update(funeral_home_params)
+      redirect_to my_funeral_path(@funeral), notice: 'Funeral home was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   # def edit

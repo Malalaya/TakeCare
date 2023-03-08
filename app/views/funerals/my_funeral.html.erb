@@ -2,7 +2,7 @@
 
 <div class="button-container">
   <% if @flower.present? %>
-    <%= link_to "#{@flowers.name}", edit_funeral_flower_path(@funeral) %>
+    <%= link_to @flower.name, edit_funeral_flower_path(@funeral, @funeral.flower) %>
   <% else %>
     <%= link_to 'Add Flower', new_funeral_flower_path(@funeral) %>
   <% end %>
@@ -10,7 +10,7 @@
 
 <div class="button-container">
   <% if @funeral_home.present? %>
-    <%= link_to @funeral_home.name,  edit_funeral_funeral_home_path(@funeral) %>
+    <%= link_to @funeral_home.name,  edit_funeral_funeral_home_path(@funeral, @funeral.funeral_home) %>
   <% else %>
     <%= link_to 'Add Funeral Home', new_funeral_funeral_home_path(@funeral) %>
   <% end %>
@@ -18,15 +18,15 @@
 
 <div class="button-container">
   <% if @venue.present? %>
-    <%= link_to @venue.name, edit_funeral_venue_path(@funeral) %>
+    <%= link_to @venue.name, edit_funeral_venue_path(@funeral, @funeral.venue) %>
   <% else %>
     <%= link_to 'Add Venue', new_funeral_venue_path(@funeral) %>
   <% end %>
 </div>
 
 <div class="button-container">
-  <% if @guests.present? %>
-    <%= link_to @guests.number_of_guests, edit_funeral_guest_path(@funeral) %>
+  <% if @guest.present? %>
+    <%= link_to @guest.guest_count, edit_funeral_guest_path(@funeral, @funeral.guest) %>
   <% else %>
     <%= link_to 'Add Guests', new_funeral_guest_path(@funeral) %>
   <% end %>

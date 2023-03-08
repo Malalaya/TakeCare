@@ -14,7 +14,7 @@ require "faker"
     password: 123456,
     name: Faker::Name.first_name,
     surname: Faker::Name.last_name,
-    address: Faker::Address.street_address,
+    address: Faker::Address.country,
     birthday: Faker::Date.birthday(min_age: 18, max_age: 65)
   )
   file = File.open(Rails.root.join("app/assets/images/avatar.png"))
@@ -23,5 +23,4 @@ require "faker"
   Funeral.create(user: user)
 end
 
-User.first.avatar.attach(io: File.open(File.join(Rails.root,'app/assets/images/avatar.jpg')), filename: 'avatar.jpg')
-
+User.first.avatar.attach(io: File.open(File.join(Rails.root,'app/assets/images/avatar.png')), filename: 'avatar.png')

@@ -1,15 +1,19 @@
 class FuneralsController < ApplicationController
 
   def show
-    @funeral = Funeral.find(params[:id])
-    @flower = @funeral.flowers
-    @funeral_home = @funeral.funeral_homes
-    @guest = @funeral.guests
-    @venue = @funeral.venues
+    @funeral = Funeral.find(params[:funeral_id])
+    @flower = @funeral.flower
+    @funeral_home = @funeral.funeral_home
+    @guest = @funeral.guest
+    @venue = @funeral.venue
   end
 
   def my_funeral
     @funeral = Funeral.find_or_create_by(user_id: current_user.id)
+    @flower = @funeral.flower
+    @funeral_home = @funeral.funeral_home
+    @guest = @funeral.guest
+    @venue = @funeral.venue
     if @funeral.new_record?
       @funeral.save
     end
