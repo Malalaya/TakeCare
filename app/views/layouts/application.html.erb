@@ -5,9 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
+  <meta property="og:title" content="TakeCare" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.take-care.me/" />
+  <meta property="og:image" content="https://images.pexels.com/photos/807598/pexels-photo-807598.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+
   </head>
 
   <body>
@@ -25,6 +32,3 @@
     <%= render "shared/footer" %>
   </body>
 </html>
-
-<%# don´t forget! <% content_for :subpage %>
-<%# <% end %>

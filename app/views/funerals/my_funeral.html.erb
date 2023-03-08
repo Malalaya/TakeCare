@@ -1,2 +1,39 @@
 <h1>My Funeral Showpage</h1>
 
+<div class="button-container">
+  <% if @flower.present? %>
+    <%= link_to "#{@flowers.name}", edit_funeral_flower_path(@funeral) %>
+  <% else %>
+    <%= link_to 'Add Flower', new_funeral_flower_path(@funeral) %>
+  <% end %>
+</div>
+
+<div class="button-container">
+  <% if @funeral_home.present? %>
+    <%= link_to @funeral_home.name,  edit_funeral_funeral_home_path(@funeral) %>
+  <% else %>
+    <%= link_to 'Add Funeral Home', new_funeral_funeral_home_path(@funeral) %>
+  <% end %>
+</div>
+
+<div class="button-container">
+  <% if @venue.present? %>
+    <%= link_to @venue.name, edit_funeral_venue_path(@funeral) %>
+  <% else %>
+    <%= link_to 'Add Venue', new_funeral_venue_path(@funeral) %>
+  <% end %>
+</div>
+
+<div class="button-container">
+  <% if @guests.present? %>
+    <%= link_to @guests.number_of_guests, edit_funeral_guest_path(@funeral) %>
+  <% else %>
+    <%= link_to 'Add Guests', new_funeral_guest_path(@funeral) %>
+  <% end %>
+</div>
+
+<style>
+  .button-container {
+    margin-top: 20px;
+  }
+</style>

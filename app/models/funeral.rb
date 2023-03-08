@@ -4,4 +4,5 @@ class Funeral < ApplicationRecord
   has_many :guests
   has_many :venues
   has_many :funeral_homes
+  validates :user, presence: true, uniqueness: true
 end
