@@ -14,6 +14,18 @@ class FuneralHomesController < ApplicationController
   #   end
   # end
 
+  def index
+    @funeral_homes = FuneralHome.all
+    @markers = @funeral_homes.geocoded.map do |funeral_home|
+      {
+        lat: funeral_home.latitude,
+        lng: funeral_home.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {funeral_home: funeral_home}),
+        marker_html: render_to_string(partial: "marker", locals: {funeral_home: funeral_home})
+      }
+    end
+  end
+
   def new
     @funeral_home = FuneralHome.new
   end

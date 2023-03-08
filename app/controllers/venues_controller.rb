@@ -1,5 +1,18 @@
 class VenuesController < ApplicationController
-  before_action :set_funeral, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_funeral, only: %i[index new create edit update destroy]
+
+  def index
+    @venues = Venue.all
+    @markers = @venues.geocoded.map do |venue|
+      {
+        lat: venue.latitude,
+        lng: venue.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {venue: venue}),
+        marker_html: render_to_string(partial: "marker", locals: {venue: venue})
+      }
+    end
+  end
+
   def new
     @venue = Venue.new
   end
