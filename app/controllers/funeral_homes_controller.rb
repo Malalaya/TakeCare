@@ -1,5 +1,5 @@
 class FuneralHomesController < ApplicationController
-  before_action :set_funeral, only: %i[new create edit update destroy]
+  before_action :set_funeral, only: %i[show index new create edit update destroy]
 
   # def new
   #   @funeral_home = FuneralHome.new
