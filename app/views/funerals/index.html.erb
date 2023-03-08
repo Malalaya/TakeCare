@@ -1,7 +1,7 @@
 
-<% @users.each do |plant| %>
+<% @users.each do |user| %>
   <div>
-    <h2><%= user.name, user_path(user) %></h2>
+    <h2><%= user.email, user_path(user) %></h2>
         <% if user.photo.attached?  %>
         <%= cl_image_tag user.photo.key, crop: :fill %>
         <% else %>
