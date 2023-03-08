@@ -1,0 +1,7 @@
+<h1>User Profile</h1>
+
+<p>Name: <%= current_user.name %></p>
+<p>Email: <%= current_user.email %></p>
+<p>Description: <%= current_user.description %></p>
+
+<%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
