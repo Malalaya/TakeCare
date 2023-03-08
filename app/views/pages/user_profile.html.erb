@@ -1,33 +1,41 @@
 <div class="user-name">
-<h1><%= @user.name %> <%= @user.surname %></h1>
 </div>
 
-<div class="user-background">
-  <% if @user.avatar.attached? %>
-    <%= image_tag(@user.avatar.variant(resize_to_limit: [300, 300])) %>
-  <% else %>
-    <%= image_tag(logo.png(resize_to_limit: [300, 300])) %>
-  <% end %>
-</div>
+<div class="card-user">
+  <div class="user-background">
+    <% if @user.background_picture.attached? %>
+      <%= image_tag(@user.background_picture.variant) %>
+    <% else %>
+      <%= image_tag("green_leaves.jpeg") %>
+    <% end %>
+  </div>
 
-<div class="user-avatar">
-  <% if @user.avatar.attached? %>
-    <%= image_tag(@user.avatar.variant(resize_to_limit: [300, 300])) %>
-  <% else %>
-    <%= image_tag(logo.png(resize_to_limit: [300, 300])) %>
-  <% end %>
-</div>
+  <div class="card-user-infos">
+    <div>
+      <h1><%= @user.name %> <%= @user.surname %></h1>
+    </div>
+    <div class="user-description">
+      <p><strong>Description:</strong> <%= @user.description %></p>
+    </div>
+    <div class="user-avatar card-user-avatar-bordered">
+      <% if @user.avatar.attached? %>
+        <%= image_tag(@user.avatar.variant) %>
+      <% else %>
+        <%= image_tag("logo.png") %>
+      <% end %>
+    </div>
+    <div class="user-address">
+      <p><strong>Address:</strong> <%= @user.address %></p>
+    </div>
 
-<div class="user-address">
-<p><strong>Address:</strong> <%= @user.address %></p>
-</div>
+    <div class="user-description">
+      <p><strong>Description:</strong> <%= @user.description %></p>
+    </div>
 
-<div class="user-description">
-<p><strong>Description:</strong> <%= @user.description %></p>
-</div>
-
-<div class="user-birthday">
-<p><strong>Birthday:</strong> <%= @user.birthday %></p>
+    <div class="user-birthday">
+      <p><strong>Birthday:</strong> <%= @user.birthday %></p>
+    </div>
+  </div>
 </div>
 
 <% if user_signed_in? && current_user.id == @user.id %>
