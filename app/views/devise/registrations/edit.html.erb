@@ -27,6 +27,7 @@
     required: false %>
     <%= f.input :description,
     required: false %>
+    <%= f.input :birthday, as: :date, start_year: Date.today.year - 100, end_year: Date.today.year %>
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,
