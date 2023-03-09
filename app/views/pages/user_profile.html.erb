@@ -1,19 +1,8 @@
 <% content_for :mainpage do %>
 <div class="card-user">
-  <div class="user-background">
-    <% if @user.background_picture&.attached? %>
-      <%= cl_image_tag @user.background_picture.key %>
-    <% else %>
-      <%= image_tag("green_leaves.jpeg") %>
-    <% end %>
-  </div>
-
-  <div class="card-user-infos">
+  <div class="user-first">
     <div class="user-name">
       <h1><%= @user.name %> <%= @user.surname %></h1>
-    </div>
-    <div class="user-description">
-      <h5> <%= @user.description %></h5>
     </div>
     <div class="user-avatar card-user-avatar-bordered">
       <% if @user.avatar.attached? %>
@@ -21,18 +10,41 @@
       <% else %>
         <%= image_tag("avatar.png") %>
       <% end %>
-      <div class="user-address">
-        <p><%= @user.address %></p>
-      </div>
-
-        <div class="user-birthday">
-          <p><%= @user.birthday %></p>
-        </div>
-      </div>
+    </div>
+    <div class="user-background">
+      <% if @user.background_picture&.attached? %>
+        <%= cl_image_tag @user.background_picture.key %>
+      <% else %>
+        <%= image_tag("green_leaves.jpeg") %>
+      <% end %>
+    </div>
+    <div class="user-navbar">
+      <h5><%= @user.name %></h5>
+      <h5><%= link_to "Health", "" %></h5>
+      <h5><%= link_to "Funeral", funeral_path %></h5>
+      <h5><%= link_to "Informal Will", "" %></h5>
+      <h5><%= link_to "Documents", "" %></h5>
     </div>
   </div>
 
-  <div class= "card-dark-grey">
+<div class="container">
+
+
+  <div class="card-big">
+    <div class="user-description">
+      <h5> <%= @user.description %></h5>
+    </div>
+
+    <div class="user-address">
+      <p><%= @user.address %></p>
+    </div>
+
+    <div class="user-birthday">
+      <p><%= @user.birthday %></p>
+    </div>
+  </div>
+
+  <div class= "card-big">
     <h2>Take Care</h2>
     <div class="health-button">
       <% if user_signed_in? && current_user.id == @user.id %>
@@ -41,7 +53,7 @@
     </div>
   </div>
 
-  <div class= "card-light-grey">
+  <div class= "card-big">
     <h2>Be Prepared</h2>
     <div class="funeral-button">
       <% if user_signed_in? && current_user.id == @user.id %>
@@ -59,6 +71,6 @@
       <% end %>
     </div>
   </div>
-
+</div>
 
 <% end %>
