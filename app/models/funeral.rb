@@ -1,5 +1,5 @@
 class Funeral < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, dependent: :destroy
   has_one :flower
   has_one :guest
   has_one :funeral_home

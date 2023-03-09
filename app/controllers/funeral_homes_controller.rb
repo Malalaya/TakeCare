@@ -14,6 +14,7 @@ class FuneralHomesController < ApplicationController
   #   end
   # end
 
+
   def new
     @funeral = Funeral.find(params[:funeral_id])
     @funeral_home = FuneralHome.new
@@ -33,7 +34,8 @@ class FuneralHomesController < ApplicationController
 
   def create
     @funeral = Funeral.find(params[:funeral_id])
-    @funeral_home = @funeral.funeral_homes.build(funeral_home_params)
+    @funeral_home = FuneralHome.new(funeral_home_params)
+    @funeral_home.funeral = @funeral
     if @funeral_home.save
       redirect_to my_funeral_path(@funeral)
     else
@@ -79,7 +81,7 @@ class FuneralHomesController < ApplicationController
   private
 
   def funeral_home_params
-    params.require(:funeral_home).permit(:name, :address, :funeral_id)
+    params.require(:funeral_home).permit(:name, :address)
   end
 
   def set_funeral
