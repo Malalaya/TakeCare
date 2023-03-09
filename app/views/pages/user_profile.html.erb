@@ -1,64 +1,79 @@
 <% content_for :mainpage do %>
 <div class="card-user">
-  <div class="user-background">
-    <% if @user.background_picture&.attached? %>
-      <%= cl_image_tag @user.background_picture.key %>
-    <% else %>
-      <%= image_tag("green_leaves.jpeg") %>
-    <% end %>
-  </div>
-
-    <div class="card-user-infos">
-      <div class="user-name">
-        <h1><%= @user.name %> <%= @user.surname %></h1>
-      </div>
-      <div class="user-description">
-        <h5> <%= @user.description %></h5>
-      </div>
-      <div class="user-avatar card-user-avatar-bordered">
-        <% if @user.avatar.attached? %>
-          <%= cl_image_tag @user.avatar.key %>
-        <% else %>
-          <%= image_tag("avatar.png") %>
+  <div class="user-first">
+    <div class="user-name">
+      <h1><%= @user.name %> <%= @user.surname %></h1>
+    </div>
+    <div class="user-avatar card-user-avatar-bordered">
+      <% if @user.avatar.attached? %>
+        <%= cl_image_tag @user.avatar.key %>
+      <% else %>
+        <%= image_tag("avatar.png") %>
+      <% end %>
+    </div>
+    <div class="user-background">
+      <% if @user.background_picture&.attached? %>
+        <%= cl_image_tag @user.background_picture.key %>
+      <% else %>
+        <%= image_tag("green_leaves.jpeg") %>
+      <% end %>
+    </div>
+    <div class="user-navbar">
+      <h5><%= @user.name %></h5>
+      <h5>
+        <% if user_signed_in? && current_user.id == @user.id %>
+        <%= link_to "Health", "" %>
         <% end %>
-        <div class="user-address">
-          <p><%= @user.address %></p>
-        </div>
+      </h5>
 
-        <div class="user-birthday">
-          <p><%= @user.birthday %></p>
-        </div>
-      </div>
+      <h5>
+        <% if user_signed_in? && current_user.id == @user.id %>
+        <%= link_to "Funeral", funeral_path %>
+        <% end %>
+      </h5>
+
+      <h5>
+        <% if user_signed_in? && current_user.id == @user.id %>
+        <%= link_to "Informal Will", ""%>
+        <% end %>
+      </h5>
+
+      <h5>
+        <% if user_signed_in? && current_user.id == @user.id %>
+        <%= link_to "Documents", "" %>
+        <% end %>
+      </h5>
+
     </div>
   </div>
 
-  <div class= "card-dark-grey">
-    <h2>Take Care</h2>
-    <div class="health-button">
-      <% if user_signed_in? && current_user.id == @user.id %>
-      <%= link_to "Health", "", class: "button-blue" %>
-      <% end %>
+<div class="container">
+
+
+  <div class="card-big">
+    <div class="user-description">
+      <h5> <%= @user.description %></h5>
     </div>
   </div>
 
-  <div class= "card-light-grey">
-    <h2>Be Prepared</h2>
-    <div class="funeral-button">
-      <% if user_signed_in? && current_user.id == @user.id %>
-      <%= link_to "Funeral", funeral_path, class: "button-blue" %>
-      <% end %>
+  <div class= "card-big">
+
+    <div class="user-birthday">
+      <p><%= @user.birthday %></p>
     </div>
-    <div class="will-button">
-      <% if user_signed_in? && current_user.id == @user.id %>
-      <%= link_to "Informal Will", "", class: "button-blue" %>
-      <% end %>
+
+    <div class="user-address">
+      <p><%= @user.address %></p>
     </div>
+  </div>
+
+  <div class= "card-big">
     <div class="edit-button">
       <% if user_signed_in? && current_user.id == @user.id %>
       <%= link_to "Edit Profile", edit_user_registration_path, class: "button-blue" %>
       <% end %>
     </div>
   </div>
-
+</div>
 
 <% end %>

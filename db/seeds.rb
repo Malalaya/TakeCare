@@ -8,6 +8,9 @@
 
 require "faker"
 
+User.destroy_all
+Funeral.destroy_all
+
 5.times do
   user = User.new(
     email: Faker::Internet.email,

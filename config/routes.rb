@@ -10,10 +10,10 @@ Rails.application.routes.draw do
     resources :flowers, only: %i[index show new create edit update destroy]
     resources :venues, only: %i[index new show create edit update destroy]
     resources :funeral_homes, only: %i[index show new create edit update destroy]
+    resources :relatives, only: %i[new create]
   end
   resources :users, only: [:show]
   get 'my_funeral', to: 'funerals#my_funeral'
   get 'my_profile', to: 'pages#my_profile'
   get '/user_profile/:id', to: 'pages#user_profile', as: 'userprofile'
-
 end

@@ -5,6 +5,8 @@
 
     <% if user_signed_in? %>
       <h1>View your loved ones</h1>
+
+      <%# <%= link_to "add a relative", relatives_new_path, class: "button-blue" %>
         <div class="cards">
 
           <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_url("dad_avatar_image.jpg") %>">

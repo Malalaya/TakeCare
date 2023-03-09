@@ -1,116 +1,81 @@
-.card-user {
+.card-user{
   overflow: hidden;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .card-user .user-background img{
-  height: 250px;
+  height: 168px;
   width: 100%;
   object-fit: cover;
+  display: flex;
 }
 
-
-.card-user .user-name{
-  position: absolute;
-  object-fit: cover;
-  left: 300px;
-  top: 30px;
+.user-first{
+  position: relative;
 }
 
-
-.card-user .user-description{
+.user-name h1{
+  color: white;
+  font-weight: bold;
   position: absolute;
   object-fit: cover;
-  left: 300px;
-  top: 90px;
-}
-
-.card-user .user-address{
-  position: absolute;
-  object-fit: cover;
-  left: 300px;
-  top: 130px;
-}
-
-.card-user .user-birthday{
-  position: absolute;
-  object-fit: cover;
-  left: 300px;
-  top: 150px;
+  left: 280px;
+  bottom: 70px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
 }
 
 .card-user .card-user-avatar-bordered img {
   border-radius: 50%;
-  width: 150px;
+  width: 120px;
   position: absolute;
   left: 100px;
-  top: -50px;
+  bottom: 40px;
 }
 
-.card-user p {
-  font-size: 12px;
-  opacity: .7;
-  margin: 0;
-  left: 300px;
-}
-
-
-
-.card-user-infos {
+.user-navbar {
+  padding-left: 280px;
+  padding-top: 16px;
+  padding-right: 30px;
+  padding-bottom: 16px;
   display: flex;
+  justify-content: flex-end;
   justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
-  height: 200px;
+  background-color: white;
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.05);
 }
 
-.card-light-grey{
-  background-color: $dark-gray;
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.card-big {
   display: flex;
-  position: relative;
-  height: 200px;
+  flex-direction: column;
+  width: 100%;
+  background: #FFFFFF;
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 20px;
 }
 
-.card-dark-grey{
-  background-color: $background;
+
+.card big .user-address .user-description .user-birthday{
+
+}
+
+.card-small {
   display: flex;
-  position: relative;
-  height: 200px;
-}
-
-.card-dark-grey .health-button {
-  left: 300px;
-  top: 70px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
   position: absolute;
-}
-
-.card-light-grey .funeral-button {
-  left: 300px;
-  position: absolute;
-  top: 70px;
-}
-
-.card-light-grey .will-button {
-  left: 300px;
-  position: absolute;
-  top: 130px;
-}
-
-.card-light-grey .edit-button {
-  right: 50px;
-  bottom: 50px;
-  position: absolute;
-}
-
-.card-dark-grey h2 {
-  left: 300px;
-  top: 24px;
-  position: absolute;
-}
-
-.card-light-grey h2 {
-  left: 300px;
-  top: 24px;
-  position: absolute;
+  width: 395px;
+  height: 175px;
+  background: #FFFFFF;
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
 }
