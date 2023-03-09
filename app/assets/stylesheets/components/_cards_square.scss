@@ -1,4 +1,3 @@
-
 .card-hover img {
   max-width: 100%;
   height: auto;
@@ -32,16 +31,19 @@
   padding: 0;
   height: 100vh;
   color: #000000;
-  background-color: #fbfbfb;
+  background-color: #ebe9e9;
 }
 
 .card-hover {
   $root: &;
   width: 360px;
   height: 500px;
+  margin-left: 60px;
+  margin-right: 10px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 0 32px -10px rgba(0,0,0,0.08);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;;
+  border-radius: 10px;
 
   &:has(#{$root}__link:hover) {
 
@@ -56,7 +58,7 @@
     #{$root} {
 
       &__content {
-        background-color: #fefefe;
+        background-color: #67A3A0;
         bottom: 100%;
         transform: translateY(100%);
         padding: 50px 60px;
@@ -79,7 +81,7 @@
   &__content {
     width: 100%;
     text-align: center;
-    background-color: #86B971;
+    background-color: #67A3A0;
     padding: 0 60px 50px;
     position: absolute;
     bottom: 0;
@@ -116,7 +118,7 @@
     margin-bottom: 1em;
 
     span {
-      color: #2d7f0b;
+      color: #000000;
     }
   }
 
@@ -133,7 +135,7 @@
     flex-wrap: wrap;
     align-items: center;
     text-decoration: none;
-    color: #2d7f0b;
+    color: #000000;
     opacity: 0;
     padding: 10px;
     transition: all 0.35s;
@@ -172,7 +174,7 @@
     transition: transform 0.35s;
 
     span {
-      color: #2d7f0b;
+      color: #000000;
     }
   }
 
