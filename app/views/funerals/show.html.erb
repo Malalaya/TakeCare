@@ -2,8 +2,8 @@
 
 <p>
   <strong>Flower:</strong>
-  <% if @funeral.flowers.present? %>
-    <%= link_to @funeral.flowers.name, edit_funeral_flower_path(@funeral, @funeral.flowers) %>
+  <% if @funeral.flower.present? %>
+    <%= link_to @funeral.flower.name, edit_funeral_flower_path(@funeral, @funeral.flower) %>
     <%#= link_to 'Edit Flower', edit_funeral_flower_path(@funeral, @funeral.flowers) %>
   <% else %>
     <%= link_to 'Add Flower', new_funeral_flower_path(@funeral) %>
@@ -12,8 +12,8 @@
 
 <p>
   <strong>Funeral Home:</strong>
-  <% if @funeral.funeral_homes.present? %>
-    <%= link_to @funeral.funeral_homes.name, edit_funeral_funeral_home_path(@funeral, @funeral.funeral_homes) %>
+  <% if @funeral.funeral_home.present? %>
+    <%= link_to @funeral.funeral_home.name, edit_funeral_funeral_home_path(@funeral, @funeral.funeral_home) %>
   <% else %>
     <%= link_to 'Add Funeral Home', new_funeral_funeral_home_path(@funeral) %>
   <% end %>
@@ -21,8 +21,8 @@
 
 <p>
   <strong>Venue:</strong>
-  <% if @funeral.venues.present? %>
-    <%= link_to @funeral.venues.name, edit_funeral_venue_path(@funeral, @funeral.venues) %>
+  <% if @funeral.venue.present? %>
+    <%= link_to @funeral.venue.name, edit_funeral_venue_path(@funeral, @funeral.venue) %>
   <% else %>
     <%= link_to 'Add Venue', new_funeral_venue_path(@funeral) %>
   <% end %>
@@ -30,8 +30,8 @@
 
 <p>
   <strong>Number of Guests</strong>
-  <% if @funeral.guests.present? %>
-    <%= link_to @funeral.guests.count, edit_funeral_guest_path(@funeral, @funeral.guests) %>
+  <% if @funeral.guest.present? %>
+    <%= link_to @funeral.guest.guest_count, edit_funeral_guest_path(@funeral, @funeral.guest) %>
     <%#= link_to 'Edit Guests', edit_funeral_guest_path(@funeral, @funeral.guests) %>
   <% else %>
     <%= link_to 'Add Guests', new_funeral_guest_path(@funeral) %>

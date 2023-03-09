@@ -16,7 +16,7 @@ class GuestsController < ApplicationController
   end
 
   def edit
-    @guest = Guest.find(params[:funeral_id])
+    @guest = Guest.find(params[:id])
   end
 
   def update

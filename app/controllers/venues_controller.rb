@@ -1,5 +1,5 @@
 class VenuesController < ApplicationController
-  before_action :set_funeral, only: %i[index new create edit update destroy]
+  before_action :set_funeral, only: %i[index show new create edit update destroy]
 
   def index
     @venues = Venue.all
@@ -11,6 +11,10 @@ class VenuesController < ApplicationController
         marker_html: render_to_string(partial: "marker", locals: {venue: venue})
       }
     end
+  end
+
+  def show
+    @venue = Venue.find(params[:id])
   end
 
   def new
