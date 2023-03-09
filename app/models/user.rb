@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :families
   has_many :relatives
-  has_many :funerals, through: :relatives
+  has_many :funerals, through: :relatives, dependent: :destroy
   has_one_attached :avatar
   has_one_attached :background_picture
 end
