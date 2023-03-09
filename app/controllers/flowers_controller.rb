@@ -1,8 +1,8 @@
 class FlowersController < ApplicationController
-  before_action :set_funeral, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_funeral, only: %i[new create edit update show destroy]
+  before_action :set_user, only: %i[create edit update show destroy]
 
   def new
-    @funeral = Funeral.find(params[:funeral_id])
     @flower = Flower.new
   end
 
@@ -16,14 +16,18 @@ class FlowersController < ApplicationController
     end
   end
 
+  def show
+    @flower = @funeral.flower
+  end
+
   def edit
-    @funeral = Funeral.find(params[:funeral_id])
     @flower = Flower.find(params[:funeral_id])
   end
 
   def update
     @flower = Flower.find(params[:id])
     @flower.update(flower_params)
+    raise
     redirect_to my_funeral_path(@funeral)
   end
 
@@ -34,6 +38,10 @@ class FlowersController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = current_user
+  end
 
   def flower_params
     params.require(:flower).permit(:name, :funeral_id)

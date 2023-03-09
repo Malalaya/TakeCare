@@ -34,7 +34,7 @@ class GuestsController < ApplicationController
   private
 
   def guest_params
-    params.require(:guest).permit(:guest_list, :number_of_guests, :funeral_id)
+    params.require(:guest).permit(:guest_list, :funeral_id)
   end
 
   def set_funeral
