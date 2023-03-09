@@ -20,10 +20,30 @@
     </div>
     <div class="user-navbar">
       <h5><%= @user.name %></h5>
-      <h5><%= link_to "Health", "" %></h5>
-      <h5><%= link_to "Funeral", funeral_path %></h5>
-      <h5><%= link_to "Informal Will", "" %></h5>
-      <h5><%= link_to "Documents", "" %></h5>
+      <h5>
+        <% if user_signed_in? && current_user.id == @user.id %>
+        <%= link_to "Health", "" %>
+        <% end %>
+      </h5>
+
+      <h5>
+        <% if user_signed_in? && current_user.id == @user.id %>
+        <%= link_to "Funeral", funeral_path %>
+        <% end %>
+      </h5>
+
+      <h5>
+        <% if user_signed_in? && current_user.id == @user.id %>
+        <%= link_to "Informal Will", ""%>
+        <% end %>
+      </h5>
+
+      <h5>
+        <% if user_signed_in? && current_user.id == @user.id %>
+        <%= link_to "Documents", "" %>
+        <% end %>
+      </h5>
+
     </div>
   </div>
 
@@ -34,37 +54,20 @@
     <div class="user-description">
       <h5> <%= @user.description %></h5>
     </div>
+  </div>
 
-    <div class="user-address">
-      <p><%= @user.address %></p>
-    </div>
+  <div class= "card-big">
 
     <div class="user-birthday">
       <p><%= @user.birthday %></p>
     </div>
-  </div>
 
-  <div class= "card-big">
-    <h2>Take Care</h2>
-    <div class="health-button">
-      <% if user_signed_in? && current_user.id == @user.id %>
-      <%= link_to "Health", "", class: "button-blue" %>
-      <% end %>
+    <div class="user-address">
+      <p><%= @user.address %></p>
     </div>
   </div>
 
   <div class= "card-big">
-    <h2>Be Prepared</h2>
-    <div class="funeral-button">
-      <% if user_signed_in? && current_user.id == @user.id %>
-      <%= link_to "Funeral", funeral_path, class: "button-blue" %>
-      <% end %>
-    </div>
-    <div class="will-button">
-      <% if user_signed_in? && current_user.id == @user.id %>
-      <%= link_to "Informal Will", "", class: "button-blue" %>
-      <% end %>
-    </div>
     <div class="edit-button">
       <% if user_signed_in? && current_user.id == @user.id %>
       <%= link_to "Edit Profile", edit_user_registration_path, class: "button-blue" %>
