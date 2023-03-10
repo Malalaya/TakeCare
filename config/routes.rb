@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :funeral_homes, only: %i[index show new create edit update destroy]
     resources :relatives, only: %i[new show create]
   end
-  resources :users, only: [:show]
+  resources :users, only: %i[show]
   get 'my_funeral', to: 'funerals#my_funeral'
   get 'my_profile', to: 'pages#my_profile'
   get '/user_profile/:id', to: 'pages#user_profile', as: 'userprofile'
