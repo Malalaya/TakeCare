@@ -6,8 +6,8 @@ class RelativesController < ApplicationController
   end
 
   def show
-    @relative.funeral = @funeral
     @relative = Relative.find(params[:id])
+    @relative.funeral = @funeral
   end
 
   def create
@@ -20,7 +20,6 @@ class RelativesController < ApplicationController
         @relative.funeral = @funeral
         @relative.save
       end
-      raise
     else
       render :new, status: :unprocessable_entity
     end
@@ -52,6 +51,6 @@ class RelativesController < ApplicationController
   end
 
   def set_funeral
-    @funeral = Funeral.find(params[:funeral_id])
+    @funeral = Funeral.find(params[:id])
   end
 end
