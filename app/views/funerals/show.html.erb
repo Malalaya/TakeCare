@@ -19,7 +19,7 @@
       <% end %>
     </div>
     <div class="user-navbar">
-      <h5><%= link_to @user.name, user_path %></h5>
+      <h5><%= link_to "Profile", userprofile_path(@user) %></h5>
       <h5>
         <%= link_to "Health", "" %>
       </h5>
