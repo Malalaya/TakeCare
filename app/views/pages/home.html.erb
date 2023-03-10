@@ -3,20 +3,24 @@
 
   <div class="main-container">
 
-    <% if user_signed_in? %>
+    <% if user_signed_in? && current_user.relatives.any?%>
       <h1>View your loved ones</h1>
         <div class="cards">
 
+      <% @relatives.each do |relative| %>
+          <%= link_to "#{relative.user.name}", funeral_path(relative.funeral), class:"card-category", style: "background-image: url(#{relative.user.avatar.attached? ? cl_image_path(relative.user.avatar.key) : plant.url})" %>
+        <% end %>
+
           <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_url("dad_avatar_image.jpg") %>">
-            <h2><%= link_to "#{@relatives.second.user.name}", funeral_path(@relatives.second.funeral) %></h2>
+            <h2>Dad</h2>
           </div>
 
           <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_url("grandma_avatar_image.jpg") %>">
-            <h2>Paul</h2>
+            <h2>Grandma</h2>
           </div>
 
           <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_url("mum_avatar_image.jpg") %>">
-                <h2>John</h2>
+                <h2>Mom</h2>
           </div>
 
             <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_url("sister_image_avatar.jpg") %>">
@@ -24,16 +28,20 @@
           </div>
 
           <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_url("uncleMike_avatar_image.jpg") %>">
-                <h2>Lucy</h2>
+                <h2>Uncle Mike</h2>
           </div>
         </div>
 
 
-    <% else %>
-      <h1>Register now to be prepared</h1>
+    <% elsif %>
+      <h1>Connect with your Family</h1>
 
-        <%= link_to "Register now", new_user_session_path, class: "button-blue" %>
         <br>
+
+        <% else %>
+
+        <h1>Register now to be prepared</h1>
+        <%= link_to "Register now", new_user_session_path, class: "button-blue" %>
     <% end %>
   <h1>What we have to offer</h1>
   </div>
