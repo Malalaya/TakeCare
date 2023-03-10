@@ -8,7 +8,7 @@
         <div class="cards">
 
       <% @relatives.each do |relative| %>
-          <%= link_to "#{relative.user.name}", funeral_path(relative.funeral), class:"card-category", style: "background-image: url(#{relative.user.avatar.attached? ? cl_image_path(relative.user.avatar.key) : plant.url})" %>
+          <%= link_to "#{relative.user.name}", funeral_path(relative.user.funerals.first), class:"card-category", style: "background-image: url(#{relative.user.avatar.attached? ? cl_image_path(relative.user.avatar.key) : plant.url})" %>
         <% end %>
 
           <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_url("dad_avatar_image.jpg") %>">
