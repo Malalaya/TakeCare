@@ -19,6 +19,7 @@ class RelativesController < ApplicationController
         @relative.user = user
         @relative.funeral = @funeral
         @relative.save
+        redirect_to userprofile_path(user)
       end
     else
       render :new, status: :unprocessable_entity
