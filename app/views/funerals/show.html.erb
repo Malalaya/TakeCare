@@ -1,39 +1,90 @@
-<h1>Funeral Showpage</h1>
+<% content_for :mainpage do %>
+<div class="card-user">
+  <div class="user-first">
+    <div class="user-name">
+      <h1><%= @user.name %> <%= @user.surname %></h1>
+    </div>
+    <div class="user-avatar card-user-avatar-bordered">
+      <% if @user.avatar.attached? %>
+        <%= cl_image_tag @user.avatar.key %>
+      <% else %>
+        <%= image_tag("avatar.png") %>
+      <% end %>
+    </div>
+    <div class="user-background">
+      <% if @user.background_picture&.attached? %>
+        <%= cl_image_tag @user.background_picture.key %>
+      <% else %>
+        <%= image_tag("green_leaves.jpeg") %>
+      <% end %>
+    </div>
+    <div class="user-navbar">
+      <h5><%= link_to @user.name, user_path %></h5>
+      <h5>
+        <%= link_to "Health", "" %>
+      </h5>
 
-<p>
-  <strong>Flower:</strong>
-  <% if @funeral.flower.present? %>
-    <%= link_to @funeral.flower.name, edit_funeral_flower_path(@funeral, @funeral.flower) %>
-    <%#= link_to 'Edit Flower', edit_funeral_flower_path(@funeral, @funeral.flowers) %>
-  <% else %>
-    <%= link_to 'Add Flower', new_funeral_flower_path(@funeral) %>
-  <% end %>
-</p>
+      <h5>
+        <%= link_to "Funeral", funeral_path %>
+      </h5>
 
-<p>
-  <strong>Funeral Home:</strong>
-  <% if @funeral.funeral_home.present? %>
-    <%= link_to @funeral.funeral_home.name, edit_funeral_funeral_home_path(@funeral, @funeral.funeral_home) %>
-  <% else %>
-    <%= link_to 'Add Funeral Home', new_funeral_funeral_home_path(@funeral) %>
-  <% end %>
-</p>
+      <h5>
+        <%= link_to "Informal Will", ""%>
+      </h5>
 
-<p>
-  <strong>Venue:</strong>
-  <% if @funeral.venue.present? %>
-    <%= link_to @funeral.venue.name, edit_funeral_venue_path(@funeral, @funeral.venue) %>
-  <% else %>
-    <%= link_to 'Add Venue', new_funeral_venue_path(@funeral) %>
-  <% end %>
-</p>
+      <h5>
+        <%= link_to "Documents", "" %>
+      </h5>
+    </div>
+  </div>
 
-<p>
-  <strong>Number of Guests</strong>
-  <% if @funeral.guest.present? %>
-    <%= link_to @funeral.guest.guest_count, edit_funeral_guest_path(@funeral, @funeral.guest) %>
-    <%#= link_to 'Edit Guests', edit_funeral_guest_path(@funeral, @funeral.guests) %>
-  <% else %>
-    <%= link_to 'Add Guests', new_funeral_guest_path(@funeral) %>
-  <% end %>
-</p>
+  <div class="container">
+
+  <div class="card-big funeral" style="background-image: url('<%= image_path("flowers_image.jpeg") %>'); background-size: cover;">
+      <h5>Flowers</h5>
+      <p>
+      <% if @funeral.flower.present? %>
+        <%= link_to @funeral.flower.name, edit_funeral_flower_path(@funeral, @funeral.flower) %>
+        <%#= link_to 'Edit Flower', edit_funeral_flower_path(@funeral, @funeral.flowers) %>
+      <% else %>
+        <%= link_to 'Add Flower', new_funeral_flower_path(@funeral) %>
+      <% end %>
+      </p>
+    </div>
+
+  <div class="card-big funeral" style="background-image: url('<%= image_path("funeralHome_image.png") %>'); background-size: cover;">
+      <h5>Funeral Home</h5>
+      <p>
+        <% if @funeral.funeral_home.present? %>
+          <%= link_to @funeral.funeral_home.name, edit_funeral_funeral_home_path(@funeral, @funeral.funeral_home) %>
+        <% else %>
+          <%= link_to 'Add Funeral Home', new_funeral_funeral_home_path(@funeral) %>
+        <% end %>
+      </p>
+    </div>
+
+    <div class= "card-big funeral">
+      <h5>Venue</h5>
+      <p>
+        <% if @funeral.venue.present? %>
+          <%= link_to @funeral.venue.name, edit_funeral_venue_path(@funeral, @funeral.venue) %>
+        <% else %>
+          <%= link_to 'Add Venue', new_funeral_venue_path(@funeral) %>
+        <% end %>
+      </p>
+    </div>
+
+    <div class= "card-big funeral">
+      <h5>Number of Guests</h5>
+      <p>
+        <% if @funeral.guest.present? %>
+          <%= link_to @funeral.guest.guest_count, edit_funeral_guest_path(@funeral, @funeral.guest) %>
+          <%#= link_to 'Edit Guests', edit_funeral_guest_path(@funeral, @funeral.guests) %>
+        <% else %>
+          <%= link_to 'Add Guests', new_funeral_guest_path(@funeral) %>
+        <% end %>
+      </p>
+    </div>
+</div>
+
+<% end %>
