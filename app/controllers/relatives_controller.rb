@@ -51,6 +51,6 @@ class RelativesController < ApplicationController
   end
 
   def set_funeral
-    @funeral = Funeral.find(params[:id])
+    @funeral = Funeral.find(params[:funeral_id])
   end
 end

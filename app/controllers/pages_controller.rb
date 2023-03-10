@@ -6,6 +6,7 @@ class PagesController < ApplicationController
   def home
     if user_signed_in?
       @relatives = current_user.relatives
+      @relatives2 = Relative.where(user_id: current_user.id)
     else
       @relatives = []
     end
