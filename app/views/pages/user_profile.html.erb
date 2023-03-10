@@ -21,18 +21,26 @@
     <div class="user-navbar">
       <h5><%= link_to @user.name, user_path %></h5>
       <h5>
+
+        <% if user_signed_in? %>
         <%= link_to "Health", "" %>
       </h5>
 
       <h5>
-        <%= link_to "Funeral", funeral_path %>
+
+        <% if user_signed_in?%>
+        <%= link_to "Funeral", funeral_path(@user.funeral) %>
+        <% end %>
       </h5>
 
       <h5>
+        <% if user_signed_in? %>
         <%= link_to "Informal Will", ""%>
       </h5>
 
       <h5>
+
+        <% if user_signed_in?%>
         <%= link_to "Documents", "" %>
       </h5>
 

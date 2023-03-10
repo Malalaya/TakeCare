@@ -9,13 +9,13 @@
         <div class="cards">
         <% if @relatives %>
       <% @relatives.each do |relative| %>
-          <%= link_to "#{relative.user.name}", funeral_path(relative.user.funerals.first), class:"card-category", style: "background-image: url(#{relative.user.avatar.attached? ? cl_image_path(relative.user.avatar.key) : plant.url})" %>
+          <%= link_to "#{relative.user.name}", userprofile_path(relative.user.funerals.first), class:"card-category", style: "background-image: url(#{relative.user.avatar.attached? ? cl_image_path(relative.user.avatar.key) : plant.url})" %>
         <% end %>
       <% end %>
 
       <% if @relatives2 %>
       <% @relatives2.each do |relative2| %>
-          <%= link_to "#{relative2.funeral.user.name}", funeral_path(relative2.funeral), class:"card-category", style: "background-image: url(#{relative2.funeral.user.avatar.attached? ? cl_image_path(relative2.funeral.user.avatar.key) : ""})" %>
+          <%= link_to "#{relative2.funeral.user.name}", userprofile_path(relative2.id), class:"card-category", style: "background-image: url(#{relative2.funeral.user.avatar.attached? ? cl_image_path(relative2.funeral.user.avatar.key) : ""})" %>
         <% end %>
       <% end %>
 
