@@ -1,5 +1,5 @@
 class GuestsController < ApplicationController
-  before_action :set_funeral, only: %i[index new create]
+  before_action :set_funeral, only: %i[index new edit update create]
 
   def new
     @guest = Guest.new

@@ -44,10 +44,17 @@
       <h5>Flowers</h5>
       <p>
       <% if @funeral.flower.present? %>
+        <% if current_user == @funeral.user %>
         <%= link_to @funeral.flower.name, edit_funeral_flower_path(@funeral, @funeral.flower) %>
-        <%#= link_to 'Edit Flower', edit_funeral_flower_path(@funeral, @funeral.flowers) %>
       <% else %>
+        <%= @funeral.flower.name %>
+      <% end %>
+      <% else %>
+      <% if current_user == @funeral.user %>
         <%= link_to 'Add Flower', new_funeral_flower_path(@funeral) %>
+      <% else %>
+        No flower added yet.
+        <% end %>
       <% end %>
       </p>
     </div>
@@ -56,9 +63,17 @@
       <h5>Funeral Home</h5>
       <p>
         <% if @funeral.funeral_home.present? %>
+          <% if current_user == @funeral.user %>
           <%= link_to @funeral.funeral_home.name, edit_funeral_funeral_home_path(@funeral, @funeral.funeral_home) %>
         <% else %>
+          <%= @funeral.funeral_home.name %>
+        <% end %>
+        <% else %>
+        <% if current_user == @funeral.user %>
           <%= link_to 'Add Funeral Home', new_funeral_funeral_home_path(@funeral) %>
+        <% else %>
+          No funeral home added yet.
+        <% end %>
         <% end %>
       </p>
     </div>
@@ -66,11 +81,19 @@
     <div class= "card-big funeral">
       <h5>Venue</h5>
       <p>
-        <% if @funeral.venue.present? %>
+      <% if @funeral.venue.present? %>
+        <% if current_user == @funeral.user %>
           <%= link_to @funeral.venue.name, edit_funeral_venue_path(@funeral, @funeral.venue) %>
         <% else %>
-          <%= link_to 'Add Venue', new_funeral_venue_path(@funeral) %>
+          <%= @funeral.venue.name %>
         <% end %>
+      <% else %>
+        <% if current_user == @funeral.user %>
+          <%= link_to 'Add Venue', new_funeral_venue_path(@funeral) %>
+        <% else %>
+          No venue added yet.
+        <% end %>
+      <% end %>
       </p>
     </div>
 
@@ -78,10 +101,17 @@
       <h5>Number of Guests</h5>
       <p>
         <% if @funeral.guest.present? %>
+          <% if current_user == @funeral.user %>
           <%= link_to @funeral.guest.guest_count, edit_funeral_guest_path(@funeral, @funeral.guest) %>
-          <%#= link_to 'Edit Guests', edit_funeral_guest_path(@funeral, @funeral.guests) %>
         <% else %>
+          <%= @funeral.guest.guest_count %>
+        <% end %>
+        <% else %>
+          <% if current_user == @funeral.user %>
           <%= link_to 'Add Guests', new_funeral_guest_path(@funeral) %>
+        <% else %>
+          No guests added yet.
+          <% end %>
         <% end %>
       </p>
     </div>
