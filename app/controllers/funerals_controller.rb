@@ -1,7 +1,7 @@
 class FuneralsController < ApplicationController
 
   def show
-    @funeral = Funeral.find(params[:funeral_id])
+    @funeral = Funeral.find(params[:id])
     @flower = @funeral.flower
     @funeral_home = @funeral.funeral_home
     @guest = @funeral.guest

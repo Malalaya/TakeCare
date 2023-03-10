@@ -1,19 +1,28 @@
 class RelativesController < ApplicationController
-
-#before_action :set_funeral, only: %i[show create new edit update destroy]
+  before_action :set_funeral, only: %i[show create new edit update destroy]
 
   def new
     @relative = Relative.new
   end
 
-  def create
-    @relative = Relative.new(relative_params)
+  def show
     @relative.funeral = @funeral
-    @relative.user = current_user
-    if @relative.save
-      redirect_to "/", :notice => "Successfully created relative."
+    @relative = Relative.find(params[:id])
+  end
+
+  def create
+    ids= params[:relative][:user_id]
+    @users=User.where(id: ids)
+    if @users
+      @users.each do |user|
+        @relative = Relative.new
+        @relative.user = user
+        @relative.funeral = @funeral
+        @relative.save
+      end
+      raise
     else
-      render :action => 'new'
+      render :new, status: :unprocessable_entity
     end
   end
 
