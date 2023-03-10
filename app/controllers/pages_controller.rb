@@ -1,9 +1,14 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
   # before_action :set_funeral, only: %i[my_funeral home]
+  #before_action :set_relative, only: %i[home]
 
   def home
-    @relatives = current_user.relatives
+    if user_signed_in?
+      @relatives = current_user.relatives
+    else
+      @relatives = []
+    end
   end
 
   def my_profile
@@ -17,6 +22,10 @@ class PagesController < ApplicationController
 
   # def set_funeral
   #   @funeral =
+  # end
+
+  # def set_relative
+  #   @relative = Relative.find(params[:relative_id])
   # end
 
   def set_user
