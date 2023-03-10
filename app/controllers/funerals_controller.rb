@@ -6,6 +6,7 @@ class FuneralsController < ApplicationController
     @funeral_home = @funeral.funeral_home
     @guest = @funeral.guest
     @venue = @funeral.venue
+    @user = @funeral.user
   end
 
   def my_funeral
