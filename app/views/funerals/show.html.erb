@@ -59,7 +59,7 @@
       </p>
     </div>
 
-  <div class="card-big funeral" style="background-image: url('<%= asset_path("funeralHome_image.png") %>'); background-size: cover;">
+  <div class="card-big funeral" id="map" style="background-image: url('<%= asset_path("funeralHome_image.png") %>'); background-size: cover;">
       <h5>Funeral Home</h5>
       <p>
         <% if @funeral.funeral_home.present? %>
@@ -118,3 +118,14 @@
 </div>
 
 <% end %>
+
+
+<script>
+  mapboxgl.accessToken = '<%= ENV['MAPBOX_API_KEY'] %>';
+  var geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl
+  });
+  document.getElementById('map').appendChild(geocoder.onAdd(map));
+  geocoder.query('<%= @funeral.funeral_home.address %>');
+</script>
