@@ -8,6 +8,14 @@ class FuneralsController < ApplicationController
     @venue = @funeral.venue
     @user = @funeral.user
     @active = :funeral
+    @venue_markers = [{
+      lat: @venue.latitude,
+      lng: @venue.longitude
+    }] if @venue.geocoded?
+    @funeral_home_markers = [{
+      lat: @funeral_home.latitude,
+      lng: @funeral_home.longitude
+    }] if @funeral_home.geocoded?
   end
 
   def my_funeral
