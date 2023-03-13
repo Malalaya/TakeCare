@@ -7,6 +7,7 @@ class FuneralsController < ApplicationController
     @guest = @funeral.guest
     @venue = @funeral.venue
     @user = @funeral.user
+    @active = :funeral
   end
 
   def my_funeral

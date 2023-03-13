@@ -29,7 +29,7 @@
 
       <h5>
         <% if user_signed_in? && @user.funerals.any? %>
-        <%= link_to "Funeral", funeral_path(@user.funerals.first) %>
+        <%= link_to "Funeral", funeral_path(@user.funerals.first), class: "#{'active' if @active == :funeral}"  %>
         <% end %>
       </h5>
 
