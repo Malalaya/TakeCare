@@ -4,7 +4,7 @@
     <% if @user.background_picture&.attached? %>
       <%= cl_image_tag @user.background_picture.key %>
     <% else %>
-      <%= image_tag("green_leaves.jpeg") %>
+      <%= image_tag("green_leaves.jpg") %>
     <% end %>
   </div>
 
