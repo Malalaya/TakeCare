@@ -1,15 +1,16 @@
-<h1> funeral home edit</h1>
-<%= simple_form_for [@funeral, @funeral_home] do |f| %>
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :address,
-      input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
-      wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-    %>
-  </div>
+<div class = "container">
+<h1> Funeral Home</h1>
+  <%= simple_form_for [@funeral, @funeral_home] do |f| %>
+    <div class="form-inputs">
+      <%= f.input :name %>
+      <%= f.input :address,
+        input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+        wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+      %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, class: 'btn btn-primary' %>
-  </div>
-<% end %>
-
+    <div class="form-actions">
+      <%= f.button :submit, class: 'button-blue' %>
+    </div>
+  <% end %>
+</div>

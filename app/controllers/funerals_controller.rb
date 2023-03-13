@@ -8,6 +8,14 @@ class FuneralsController < ApplicationController
     @venue = @funeral.venue
     @user = @funeral.user
     @active = :funeral
+    @venue_markers = [{
+      lat: @venue.latitude,
+      lng: @venue.longitude
+    }] if @venue.geocoded?
+    @funeral_home_markers = [{
+      lat: @funeral_home.latitude,
+      lng: @funeral_home.longitude
+    }] if @funeral_home.geocoded?
   end
 
   def my_funeral
@@ -29,7 +37,7 @@ class FuneralsController < ApplicationController
     @funeral = Funeral.new(funeral_params)
     @funeral.user = current_user
     if @funeral.save
-      redirect_to my_funeral_path(@funeral)
+      redirect_to funeral_path(@user.funerals.first)
     else
       render :new
     end
@@ -42,7 +50,7 @@ class FuneralsController < ApplicationController
   def update
     @funeral = Funeral.find(params[:id])
     @funeral.update(funeral_params)
-    redirect_to my_funeral_path(@funeral)
+    redirect_to funeral_path(@user.funerals.first)
   end
 
   def destroy

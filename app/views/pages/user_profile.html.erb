@@ -1,55 +1,9 @@
 <% content_for :mainpage do %>
-<div class="card-user">
-  <div class="user-first">
-    <div class="user-name">
-      <h1><%= @user.name %> <%= @user.surname %></h1>
-    </div>
-    <div class="user-avatar card-user-avatar-bordered">
-      <% if @user.avatar.attached? %>
-        <%= cl_image_tag @user.avatar.key %>
-      <% else %>
-        <%= image_tag("avatar.png") %>
-      <% end %>
-    </div>
-    <div class="user-background">
-      <% if @user.background_picture&.attached? %>
-        <%= cl_image_tag @user.background_picture.key %>
-      <% else %>
-        <%= image_tag("green_leaves.jpg") %>
-      <% end %>
-    </div>
-    <div class="user-navbar">
-      <h5><%= link_to "Profile", userprofile_path(@user) %></h5>
 
-      <h5>
-        <% if user_signed_in? %>
-        <%= link_to "Health", "" %>
-        <% end %>
-      </h5>
-
-      <h5>
-        <% if user_signed_in? && @user.funerals.any? %>
-        <%= link_to "Funeral", funeral_path(@user.funerals.first), class: "#{'active' if @active == :funeral}"  %>
-        <% end %>
-      </h5>
-
-      <h5>
-        <% if user_signed_in? %>
-        <%= link_to "Informal Will", ""%>
-        <% end %>
-      </h5>
-
-      <h5>
-        <% if user_signed_in? %>
-        <%= link_to "Documents", "" %>
-        <% end %>
-      </h5>
-
-    </div>
-  </div>
+<%= render "shared/user_navbar" %>
 
 <div class="container">
-
+  <h1>Profile</h1>
 
   <div class="card-big">
     <div class="user-description">
@@ -66,15 +20,16 @@
     <div class="user-address">
       <p><%= @user.address %></p>
     </div>
-  </div>
 
-  <div class= "card-big">
-    <div class="edit-button">
-      <% if user_signed_in? && current_user.id == @user.id %>
-      <%= link_to "Edit Profile", edit_user_registration_path, class: "button-blue" %>
-      <% end %>
-    </div>
   </div>
+  <% if user_signed_in? && current_user.id == @user.id %>
+    <div class= "card-big">
+      <div class="edit-button">
+        <%= link_to "Edit Profile", edit_user_registration_path, class: "button-blue" %>
+      </div>
+    </div>
+  <% end %>
+
 </div>
 
 <% end %>

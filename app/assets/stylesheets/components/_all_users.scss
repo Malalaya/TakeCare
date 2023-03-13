@@ -1,7 +1,4 @@
 .cards {
-  margin-top: 30px;
-  margin-bottom: 30px;
-  margin-top: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 30px;
@@ -14,6 +11,12 @@
   border-radius: 50%;
   box-shadow: 3px 3px 8px hsl(0, 0%, 80%);
   position: relative;
+  background-size: cover;
+  background-position: center center;
+}
+
+.card-category img{
+  object-fit: cover;
 }
 
 .card-category h2 {
@@ -24,6 +27,7 @@
   font-size: 1.5rem;
   font-weight: 600;
   color: hsl(0, 0%, 100%);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
 }
 
 .card-category a {
@@ -35,8 +39,6 @@
   font-weight: 600;
   color: hsl(0, 0%, 100%);
 }
-
-
 
 .card-category:hover {
   transform: scale(1.03);
