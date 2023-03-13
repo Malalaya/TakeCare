@@ -3,7 +3,7 @@
 <%= render "shared/user_navbar" %>
 
 <div class="container">
-
+  <h1>Profile</h1>
 
   <div class="card-big">
     <div class="user-description">
@@ -20,7 +20,7 @@
     <div class="user-address">
       <p><%= @user.address %></p>
     </div>
-    
+
   </div>
   <% if user_signed_in? && current_user.id == @user.id %>
     <div class= "card-big">
