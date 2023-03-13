@@ -20,15 +20,16 @@
     <div class="user-address">
       <p><%= @user.address %></p>
     </div>
+    
   </div>
-
-  <div class= "card-big">
-    <div class="edit-button">
-      <% if user_signed_in? && current_user.id == @user.id %>
-      <%= link_to "Edit Profile", edit_user_registration_path, class: "button-blue" %>
-      <% end %>
+  <% if user_signed_in? && current_user.id == @user.id %>
+    <div class= "card-big">
+      <div class="edit-button">
+        <%= link_to "Edit Profile", edit_user_registration_path, class: "button-blue" %>
+      </div>
     </div>
-  </div>
+  <% end %>
+
 </div>
 
 <% end %>
