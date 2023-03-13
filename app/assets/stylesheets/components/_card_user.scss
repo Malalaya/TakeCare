@@ -26,7 +26,9 @@
 .card-user .card-user-avatar-bordered img {
   border-radius: 50%;
   width: 120px;
+  height: 120px;
   position: absolute;
+  object-fit: cover;
   left: 100px;
   bottom: 40px;
 }
@@ -59,14 +61,33 @@
   background: #FFFFFF;
   box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
-  margin-top: 60px;
-  margin-bottom: 60px;
   padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  height:150px;
+  justify-content: center;
+  align-items: center;
 }
 
+.card-big:hover{
+  transform: scale(1.03);
+}
 
-.card big .user-address .user-description .user-birthday{
+.card-big a{
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 30px;
+  font-style: bold;
+}
 
+.card-big a:hover{
+  color: $blue;
+}
+
+.intern {
+  margin-top: 50px;
+  margin-bottom: 10px;
 }
 
 .card-small {

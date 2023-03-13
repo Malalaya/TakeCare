@@ -3,9 +3,9 @@
 
   <div class="container">
 
-  <div class="card-big funeral" style="background-image: url('<%= asset_path("flowers_image.jpg") %>'); background-size: cover;">
-      <h5>Flowers</h5>
-      <p>
+  <div class="intern">
+    <h5>Flowers</h5>
+    <div class="card-big funeral" style="background-image: url('<%= asset_path("flowers_image.jpg") %>'); background-size: cover;">
       <% if @funeral.flower.present? %>
         <% if current_user == @funeral.user %>
         <%= link_to @funeral.flower.name, edit_funeral_flower_path(@funeral, @funeral.flower) %>
@@ -19,31 +19,32 @@
         Please add a flower
       <% end %>
       <% end %>
-      </p>
+      </div>
     </div>
 
-  <div class="card-big funeral" id="map" style="background-image: url('<%= asset_path("funeralHome_image.png") %>'); background-size: cover;">
-      <h5>Funeral Home</h5>
-      <p>
-        <% if @funeral.funeral_home.present? %>
-          <% if current_user == @funeral.user %>
-          <%= link_to @funeral.funeral_home.name, edit_funeral_funeral_home_path(@funeral, @funeral.funeral_home) %>
-        <% else %>
-          <%= @funeral.funeral_home.name %>
-        <% end %>
-        <% else %>
-        <% if current_user == @funeral.user %>
-          <%= link_to 'Add Funeral Home', new_funeral_funeral_home_path(@funeral) %>
-        <% else %>
-          Please add a funeral home
-        <% end %>
-        <% end %>
-      </p>
+  <div class="intern">
+  <h5>Funeral Home</h5>
+    <div class="card-big funeral" id="map" style="background-image: url('<%= asset_path("funeralHome_image.png") %>'); background-size: cover;">
+            <% if @funeral.funeral_home.present? %>
+              <% if current_user == @funeral.user %>
+              <%= link_to @funeral.funeral_home.name, edit_funeral_funeral_home_path(@funeral, @funeral.funeral_home) %>
+            <% else %>
+              <%= @funeral.funeral_home.name %>
+            <% end %>
+            <% else %>
+            <% if current_user == @funeral.user %>
+              <%= link_to 'Add Funeral Home', new_funeral_funeral_home_path(@funeral) %>
+            <% else %>
+              Please add a funeral home
+            <% end %>
+            <% end %>
+        </div>
     </div>
 
-  <div class="card-big funeral" style="background-image: url('<%= asset_path("funeralHome_image.png") %>'); background-size: cover;">
+        <div class="intern">
       <h5>Venue</h5>
-      <p>
+
+  <div class="card-big funeral map" style="background-image: url('<%= asset_path("funeralHome_image.png") %>'); background-size: cover;">
       <% if @funeral.venue.present? %>
         <% if current_user == @funeral.user %>
           <%= link_to @funeral.venue.name, edit_funeral_venue_path(@funeral, @funeral.venue) %>
@@ -57,28 +58,30 @@
           Please add a venue
         <% end %>
       <% end %>
-      </p>
     </div>
+  </div>
 
-    <div class= "card-big funeral">
-      <h5>Number of Guests</h5>
-      <p>
-        <% if @funeral.guest.present? %>
-          <% if current_user == @funeral.user %>
-          <%= link_to @funeral.guest.guest_count, edit_funeral_guest_path(@funeral, @funeral.guest) %>
+  <div class="intern">
+    <h5>Number of Guests</h5>
+    <div class="card-big funeral map" style="background-image: url('<%= asset_path("people.jpg") %>'); background-size: cover;">
+      <% if @funeral.guest.present? %>
+        <% if current_user == @funeral.user %>
+          <%= link_to "Guests: " + @funeral.guest.guest_count.to_s, edit_funeral_guest_path(@funeral, @funeral.guest) %>
         <% else %>
-          <%= @funeral.guest.guest_count %>
+          <%= "Guests: " + @funeral.guest.guest_count.to_s %>
         <% end %>
-        <% else %>
-          <% if current_user == @funeral.user %>
+      <% else %>
+        <% if current_user == @funeral.user %>
           <%= link_to 'Add Guests', new_funeral_guest_path(@funeral) %>
         <% else %>
-          Please add guests
-          <% end %>
+          Please invite guests
         <% end %>
-      </p>
+      <% end %>
     </div>
+  </div>
 </div>
+<br>
+<br>
 
 <% end %>
 
