@@ -1,6 +1,26 @@
+require 'uri'
+require 'net/http'
+require 'openssl'
+
 class FlowersController < ApplicationController
   before_action :set_funeral, only: %i[new create edit update show destroy]
   before_action :set_user, only: %i[create edit update show destroy]
+
+  # def findflowers
+  #   url = URI("https://plants2.p.rapidapi.com/api/plants?")
+
+  #   http = Net::HTTP.new(url.host, url.port)
+  #   http.use_ssl = true
+  #   http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+  #   request = Net::HTTP::Get.new(url)
+  #   request["Authorization"] = 'GKZOHNZj0xP65kk0BAE2Tl9LGagm0pfD3DFNxAEEZcMQBhRZVDco8vbNJdnwwCo0'
+  #   request["X-RapidAPI-Key"] = ENV['X-RAPIDAPI_KEY']
+  #   request["X-RapidAPI-Host"] = 'plants2.p.rapidapi.com'
+
+  #   response = http.request(request)
+  #   puts response.read_body
+  # end
 
   def new
     @flower = Flower.new
