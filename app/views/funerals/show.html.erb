@@ -1,96 +1,92 @@
 <% content_for :mainpage do %>
 <%= render "shared/user_navbar" %>
+<div class="container">
+  <h1>Funeral Arrangements</h1>
 
-  <div class="container">
-    <h1>Funeral Arrangements</h1>
-    <div class="intern">
-      <h5>Flowers</h5>
-      <div class="card-big funeral" style="background-image: url('<%= asset_path("flowers_image.jpg") %>'); background-size: cover;">
-        <% if @funeral.flower.present? %>
-          <% if current_user == @funeral.user %>
-          <%= link_to @funeral.flower.name, edit_funeral_flower_path(@funeral, @funeral.flower) %>
-        <% else %>
-          <%= @funeral.flower.name %>
-        <% end %>
-        <% else %>
+  <div class="intern">
+    <h5>Flowers</h5>
+    <div class="card-big funeral normal" style="background-image: url('<%= asset_path("flowers_image.jpg") %>'); background-size: cover;">
+      <% if @funeral.flower.present? %>
         <% if current_user == @funeral.user %>
-          <%= link_to 'Add Flower', new_funeral_flower_path(@funeral) %>
-        <% else %>
-          Please add a flower
-        <% end %>
-        <% end %>
-        </div>
-      </div>
-
-    <div class="intern">
-    <h5>Funeral Home</h5>
-      <div class="card-big funeral" id="map" style="background-image: url('<%= asset_path("funeralHome_image.png") %>'); background-size: cover;">
-              <% if @funeral.funeral_home.present? %>
-                <% if current_user == @funeral.user %>
-                <%= link_to @funeral.funeral_home.name, edit_funeral_funeral_home_path(@funeral, @funeral.funeral_home) %>
-              <% else %>
-                <%= @funeral.funeral_home.name %>
-              <% end %>
-              <% else %>
-              <% if current_user == @funeral.user %>
-                <%= link_to 'Add Funeral Home', new_funeral_funeral_home_path(@funeral) %>
-              <% else %>
-                Please add a funeral home
-              <% end %>
-              <% end %>
-          </div>
-      </div>
-
-          <div class="intern">
-        <h5>Venue</h5>
-
-    <div class="card-big funeral map" style="background-image: url('<%= asset_path("funeralHome_image.png") %>'); background-size: cover;">
-        <% if @funeral.venue.present? %>
-          <% if current_user == @funeral.user %>
-            <%= link_to @funeral.venue.name, edit_funeral_venue_path(@funeral, @funeral.venue) %>
-          <% else %>
-            <%= @funeral.venue.name %>
-          <% end %>
-        <% else %>
-          <% if current_user == @funeral.user %>
-            <%= link_to 'Add Venue', new_funeral_venue_path(@funeral) %>
-          <% else %>
-            Please add a venue
-          <% end %>
-        <% end %>
+        <%= link_to @funeral.flower.name, edit_funeral_flower_path(@funeral, @funeral.flower) %>
+      <% else %>
+        <%= @funeral.flower.name %>
+      <% end %>
+      <% else %>
+      <% if current_user == @funeral.user %>
+        <%= link_to 'Add Flower', new_funeral_flower_path(@funeral) %>
+      <% else %>
+        Please add a flower
+      <% end %>
+      <% end %>
       </div>
     </div>
 
-    <div class="intern">
-      <h5>Number of Guests</h5>
-      <div class="card-big funeral map" style="background-image: url('<%= asset_path("people.jpg") %>'); background-size: cover;">
-        <% if @funeral.guest.present? %>
-          <% if current_user == @funeral.user %>
-            <%= link_to "Guests: " + @funeral.guest.guest_count.to_s, edit_funeral_guest_path(@funeral, @funeral.guest) %>
-          <% else %>
-            <%= "Guests: " + @funeral.guest.guest_count.to_s %>
-          <% end %>
+<div class = "container-small">
+  <div class="intern">
+    <h5>Funeral Home</h5>
+    <div class="card-small-map funeral " id="map" data-controller="map" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" data-map-markers-value="<%= @funeral_home_markers.to_json %>" >
+      <% if @funeral.funeral_home.present? %>
+        <% if current_user == @funeral.user %>
+          <%= link_to @funeral.funeral_home.name, edit_funeral_funeral_home_path(@funeral, @funeral.funeral_home) %>
         <% else %>
-          <% if current_user == @funeral.user %>
-            <%= link_to 'Add Guests', new_funeral_guest_path(@funeral) %>
-          <% else %>
-            Please invite guests
-          <% end %>
+          <%= @funeral.funeral_home.name %>
         <% end %>
+        <% else %>
+        <% if current_user == @funeral.user %>
+          <%= link_to 'Add Funeral Home', new_funeral_funeral_home_path(@funeral) %>
+        <% else %>
+          Please add a funeral home
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div class="intern">
+    <h5>Venue</h5>
+    <div class="card-small-map funeral" id="map" data-controller="map" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" data-map-markers-value="<%= @venue_markers.to_json %>" >
+          <% if @funeral.venue.present? %>
+            <% if current_user == @funeral.user %>
+              <%= link_to @funeral.venue.name, edit_funeral_venue_path(@funeral, @funeral.venue) %>
+            <% else %>
+              <%= @funeral.venue.name %>
+            <% end %>
+          <% else %>
+            <% if current_user == @funeral.user %>
+              <%= link_to 'Add Venue', new_funeral_venue_path(@funeral) %>
+            <% else %>
+              Please add a venue
+            <% end %>
+          <% end %>
+        </div>
       </div>
+    </div>
   </div>
 </div>
+
+<div class="intern">
+  <h5>Number of Guests</h5>
+  <div class="card-big funeral normal" style="background-image: url('<%= asset_path("people.jpg") %>'); background-size: cover;">
+    <% if @funeral.guest.present? %>
+      <% if current_user == @funeral.user %>
+        <%= link_to "Guests: " + @funeral.guest.guest_count.to_s, edit_funeral_guest_path(@funeral, @funeral.guest) %>
+      <% else %>
+        <%= "Guests: " + @funeral.guest.guest_count.to_s %>
+      <% end %>
+    <% else %>
+      <% if current_user == @funeral.user %>
+        <%= link_to 'Add Guests', new_funeral_guest_path(@funeral) %>
+      <% else %>
+        Please invite guests
+      <% end %>
+    <% end %>
+  </div>
+  </div>
+  </div>
+
 <br>
 <br>
+</div>
 
 <% end %>
-
-<script>
-  mapboxgl.accessToken = '<%= ENV['MAPBOX_API_KEY'] %>';
-  var geocoder = new MapboxGeocoder({
-    accessToken: mapboxgl.accessToken,
-    mapboxgl: mapboxgl
-  });
-  document.getElementById('map').appendChild(geocoder.onAdd(map));
-  geocoder.query('<%= @funeral.funeral_home.address %>');
-</script>
