@@ -6,44 +6,24 @@
     <% if user_signed_in? %>
       <h1>View your loved ones</h1>
 
-        <div class="cards">
+    <div class="cards">
 
-            <% if @relatives %>
-          <% @relatives.each do |relative| %>
-              <%= link_to userprofile_path(relative.user.funerals.first), class:"card-category", style: "background-image: url(#{relative.user.avatar.attached? ? cl_image_path(relative.user.avatar.key) : ""})" do %>
-              <h2><%= relative.user.name %></h2>
-              <% end %>
-            <% end %>
-          <% end %>
+    <% if @relatives %>
+      <% @relatives.each do |relative| %>
+        <%= link_to userprofile_path(relative.user.funerals.first), class:"card-category", style: "background-image: url(#{relative.user.avatar.attached? ? cl_image_path(relative.user.avatar.key) : ""})" do %>
+        <h2><%= relative.user.name %></h2>
+        <% end %>
+      <% end %>
+    <% end %>
 
-            <% if @relatives2 %>
-            <% @relatives2.each do |relative2| %>
-                <%= link_to userprofile_path(relative2.id), class:"card-category", style: "background-image: url(#{relative2.funeral.user.avatar.attached? ? cl_image_path(relative2.funeral.user.avatar.key) : ""})" do %>
-                  <h2><%= relative2.funeral.user.name %></h2>
-                <% end %>
-              <% end %>
-            <% end %>
-
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_url("dad_avatar_image.jpg") %>">
-            <h2><%= link_to "Paul", userprofile_path(1) %></h2>
-          </div>
-
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_url("grandma_avatar_image.jpg") %>">
-            <h2>Grandma</h2>
-          </div>
-
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_url("mum_avatar_image.jpg") %>">
-                <h2>Mom</h2>
-          </div>
-
-            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_url("sister_image_avatar.jpg") %>">
-                <h2>Miriam</h2>
-          </div>
-
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_url("uncleMike_avatar_image.jpg") %>">
-                <h2> Mike</h2>
-          </div>
-        </div>
+    <% if @relatives2 %>
+      <% @relatives2.each do |relative2| %>
+        <%= link_to userprofile_path(relative2.id), class:"card-category", style: "background-image: url(#{relative2.funeral.user.avatar.attached? ? cl_image_path(relative2.funeral.user.avatar.key) : ""})" do %>
+        <h2><%= relative2.funeral.user.name %></h2>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
 
 
     <% elsif %>
