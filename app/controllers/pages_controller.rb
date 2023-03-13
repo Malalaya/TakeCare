@@ -12,6 +12,16 @@ class PagesController < ApplicationController
     end
   end
 
+  def about_us
+  end
+
+  def loss_and_grief
+  end
+
+  def forum
+  end
+  
+
   def my_profile
   end
 

@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   get 'my_funeral', to: 'funerals#my_funeral'
   get 'my_profile', to: 'pages#my_profile'
   get '/user_profile/:id', to: 'pages#user_profile', as: 'userprofile'
+  get 'about_us', to: 'pages#about_us'
+  get 'loss_and_grief', to: 'pages#loss_and_grief'
+  get 'forum', to: 'pages#forum'
 end
