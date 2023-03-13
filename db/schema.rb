@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_08_083127) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_13_143636) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,10 +55,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_083127) do
   create_table "flowers", force: :cascade do |t|
     t.string "name"
     t.string "picture_url"
-    t.bigint "funeral_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["funeral_id"], name: "index_flowers_on_funeral_id"
+  end
+
+  create_table "funeral_flowers", force: :cascade do |t|
+    t.bigint "funeral_id", null: false
+    t.bigint "flower_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flower_id"], name: "index_funeral_flowers_on_flower_id"
+    t.index ["funeral_id"], name: "index_funeral_flowers_on_funeral_id"
   end
 
   create_table "funeral_homes", force: :cascade do |t|
@@ -112,6 +119,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_083127) do
     t.date "birthday"
     t.text "description"
     t.string "background_picture"
+    t.jsonb "notification_settings"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -130,7 +138,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_083127) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "families", "users"
-  add_foreign_key "flowers", "funerals"
+  add_foreign_key "funeral_flowers", "flowers"
+  add_foreign_key "funeral_flowers", "funerals"
   add_foreign_key "funeral_homes", "funerals"
   add_foreign_key "funerals", "users"
   add_foreign_key "guests", "funerals"

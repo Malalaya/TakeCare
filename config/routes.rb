@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :funerals, only: %i[show new create index] do
     resources :guests, only: %i[index new show create edit update destroy]
-    resources :flowers, only: %i[index show new create edit update destroy]
+    resources :funeral_flowers, only: %i[index show new create edit update destroy]
     resources :venues, only: %i[index new show create edit update destroy]
     resources :funeral_homes, only: %i[index show new create edit update destroy]
     resources :relatives, only: %i[new show create]

@@ -1,4 +1,3 @@
 class Flower < ApplicationRecord
-  belongs_to :funeral
-  validates :funeral, presence: true
+  has_one_attached :photo
 end

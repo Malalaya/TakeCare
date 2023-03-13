@@ -1,7 +1,7 @@
 <%= simple_form_for [@funeral, @relative] do |f| %>
   <div class="form-inputs">
     <%= f.association :user, collection: User.where.not(id: current_user.id),
-                      input_html: { multiple: true, data: { controller: "tom-select" }}     %>
+                      input_html: { multiple: false, data: { controller: "tom-select" }}     %>
   </div>
 
   <div class="form-actions">

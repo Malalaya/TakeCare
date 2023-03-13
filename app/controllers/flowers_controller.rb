@@ -23,14 +23,15 @@ class FlowersController < ApplicationController
   # end
 
   def new
-    @flower = Flower.new
+    @flower = FuneralFlower.new
   end
 
   def create
-    @flower = Flower.new(flower_params)
-    @flower.funeral = @funeral
-    if @flower.save
-      redirect_to funeral_path(@user.funerals.first)
+    @funeral_flower = FuneralFlower.new(funeral_flower_params)
+    @funeral_flower.funeral = @funeral
+    @funeral_flower.flower = Flower.find(params[:flower_id])
+    if @funeral_flower.save
+      redirect_to my_funeral_path(@funeral)
     else
       render :new
     end
@@ -63,8 +64,13 @@ class FlowersController < ApplicationController
   end
 
   def flower_params
-    params.require(:flower).permit(:name, :funeral_id)
+    params.require(:flower).permit(:name, :flower_id, :funeral_id)
   end
+
+  def funeral_flower_params
+    params.require(:funeral_flower).permit(:funeral_id, :flower_id)
+  end
+
 
   def set_funeral
     @funeral = Funeral.find(params[:funeral_id])
