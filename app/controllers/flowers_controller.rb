@@ -2,6 +2,8 @@ class FlowersController < ApplicationController
   before_action :set_funeral, only: %i[new create edit update show destroy]
   before_action :set_user, only: %i[create edit update show destroy]
 
+  @flowers = []
+
   def new
     @flower = Flower.new
   end
