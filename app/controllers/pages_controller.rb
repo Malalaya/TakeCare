@@ -20,13 +20,14 @@ class PagesController < ApplicationController
 
   def forum
   end
-  
+
 
   def my_profile
   end
 
   def user_profile
     @user = User.find(params[:id])
+    @active = :relative
   end
 
   private
