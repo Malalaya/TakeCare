@@ -18,35 +18,25 @@
       <% end %>
     </div>
     <div class="user-navbar">
-      <h5>
         <% if user_signed_in? %>
           <%= link_to "Profile", userprofile_path(@user), class: "#{'active' if @active == :relative}" %>
         <% end %>
-      </h5>
 
-      <h5>
         <% if user_signed_in? %>
         <%= link_to "Health", "" %>
         <% end %>
-      </h5>
 
-      <h5>
         <% if user_signed_in? && @user.funerals.any? %>
         <%= link_to "Funeral", funeral_path(@user.funerals.first), class: "#{'active' if @active == :funeral}"  %>
         <% end %>
-      </h5>
 
-      <h5>
         <% if user_signed_in? %>
         <%= link_to "Informal Will", ""%>
         <% end %>
-      </h5>
 
-      <h5>
         <% if user_signed_in? %>
         <%= link_to "Documents", "" %>
         <% end %>
-      </h5>
 
     </div>
   </div>

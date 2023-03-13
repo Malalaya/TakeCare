@@ -29,7 +29,7 @@ class FuneralsController < ApplicationController
     @funeral = Funeral.new(funeral_params)
     @funeral.user = current_user
     if @funeral.save
-      redirect_to my_funeral_path(@funeral)
+      redirect_to funeral_path(@user.funerals.first)
     else
       render :new
     end
@@ -42,7 +42,7 @@ class FuneralsController < ApplicationController
   def update
     @funeral = Funeral.find(params[:id])
     @funeral.update(funeral_params)
-    redirect_to my_funeral_path(@funeral)
+    redirect_to funeral_path(@user.funerals.first)
   end
 
   def destroy
