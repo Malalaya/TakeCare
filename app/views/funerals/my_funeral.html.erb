@@ -2,9 +2,10 @@
 
 <div class="button-container">
   <% if @flower.present? %>
-    <%= link_to @flower.name, edit_funeral_flower_path(@funeral, @funeral.flower) %>
+    <%= link_to @funeral.funeral_flower.flower.name,  edit_funeral_funeral_flower_path(@funeral, @funeral.funeral_flower) %>
+    <%= image_tag @funeral.flowers.first.photo %>
   <% else %>
-    <%= link_to 'Add Flower', new_funeral_flower_path(@funeral) %>
+    <%= link_to 'Add Flower', new_funeral_funeral_flower_path(@funeral) %>
   <% end %>
 </div>
 

@@ -2,7 +2,7 @@ class FuneralsController < ApplicationController
 
   def show
     @funeral = Funeral.find_or_create_by(user_id: current_user.id)
-    @flower = @funeral.flower
+    @flower = @funeral.funeral_flower
     @funeral_home = @funeral.funeral_home
     @guest = @funeral.guest
     @venue = @funeral.venue
@@ -12,7 +12,7 @@ class FuneralsController < ApplicationController
 
   def my_funeral
     @funeral = Funeral.find_or_create_by(user_id: current_user.id)
-    @flower = @funeral.flower
+    @flower = @funeral.funeral_flower
     @funeral_home = @funeral.funeral_home
     @guest = @funeral.guest
     @venue = @funeral.venue

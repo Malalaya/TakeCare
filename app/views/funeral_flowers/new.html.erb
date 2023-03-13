@@ -1,8 +1,8 @@
 <h1>Flowers new page</h1>
 
-<%= simple_form_for [@funeral_flower, @funeral] do |f| %>
+<%= simple_form_for [@funeral, @funeral_flower] do |f| %>
   <div class="form-inputs">
-    <%= f.association :funeral_flower, collection: Flower.all,
+    <%= f.input :flower_id, collection: Flower.all,
                       input_html: { multiple: false, data: { controller: "tom-select" }}     %>
   </div>
 
