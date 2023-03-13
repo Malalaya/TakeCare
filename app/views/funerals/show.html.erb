@@ -25,7 +25,7 @@
       </h5>
 
       <h5>
-        <%= link_to "Funeral", funeral_path %>
+        <%= link_to "Funeral", funeral_path(@user.funerals.first), class: "#{'active' if @active == :funeral}"  %>
       </h5>
 
       <h5>
