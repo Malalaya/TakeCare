@@ -7,3 +7,11 @@
 .form-control .is-valid {
   border-color: $blue;
 }
+
+.rounded {
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 20px; /* Center the image horizontally and add some bottom margin */
+}
