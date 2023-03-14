@@ -5,27 +5,33 @@
 <div class="container">
   <h1>Profile</h1>
 
-  <div class="card-big">
-    <div class="user-description">
-      <h5> <%= @user.description %></h5>
+  <div class="intern">
+    <h5>My thoughts</h5>
+    <div class="card-big">
+      <div class="user-description">
+        <h5> <%= @user.description %></h5>
+      </div>
     </div>
   </div>
 
-  <div class= "card-big">
 
-    <div class="user-birthday">
-      <p><%= @user.birthday %></p>
-    </div>
-
-    <div class="user-address">
-      <p><%= @user.address %></p>
-    </div>
-
-  </div>
-  <% if user_signed_in? && current_user.id == @user.id %>
+  <div class="intern">
+  <h5>My details</h5>
     <div class= "card-big">
-      <div class="edit-button">
-        <%= link_to "Edit Profile", edit_user_registration_path, class: "button-blue" %>
+      <div class="user-birthday">
+        <p>Birthday: <%= @user.birthday %></p>
+      </div>
+
+      <div class="user-address">
+        <p>Adress: <%= @user.address %></p>
+        <p>Email: <%= @user.email %></p>
+      </div>
+    </div>
+
+  <% if user_signed_in? && current_user.id == @user.id %>
+    <div class="intern">
+      <div style="button-center text-align: center;">
+        <%= link_to "Edit ", edit_user_registration_path, class: "button-blue" %>
       </div>
     </div>
   <% end %>
