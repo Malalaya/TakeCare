@@ -31,7 +31,7 @@ class FlowersController < ApplicationController
     @funeral_flower.funeral = @funeral
     @funeral_flower.flower = Flower.find(params[:flower_id])
     if @funeral_flower.save
-      redirect_to my_funeral_path(@funeral)
+      redirect_to funeral_path(@user.funerals.first)
     else
       render :new
     end
@@ -47,8 +47,11 @@ class FlowersController < ApplicationController
 
   def update
     @flower = Flower.find(params[:id])
-    @funeral.flower.update(flower_params)
-    redirect_to funeral_path(@user.funerals.first)
+    if @funeral.flower.update(flower_params)
+      redirect_to funeral_path(@user.funerals.first)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -60,7 +63,7 @@ class FlowersController < ApplicationController
   private
 
   def set_user
-    @user = current_user
+    @user = User.find(params[:funeral_id])
   end
 
   def flower_params

@@ -1,5 +1,6 @@
 class GuestsController < ApplicationController
   before_action :set_funeral, only: %i[index new edit update create]
+  before_action :set_user, only: %i[index new edit update create]
 
   def new
     @guest = Guest.new
@@ -9,7 +10,7 @@ class GuestsController < ApplicationController
     @guest = Guest.new(guest_params)
     @guest.funeral = @funeral
     if @guest.save
-      redirect_to my_funeral_path(@funeral)
+      redirect_to funeral_path(@user.funerals.first)
     else
       render :new
     end
@@ -22,7 +23,7 @@ class GuestsController < ApplicationController
   def update
     @guest = Guest.find(params[:id])
     if @guest.update(guest_params)
-    redirect_to funeral_path
+      redirect_to funeral_path(@user.funerals.first)
     else
       render :edit
     end
@@ -45,6 +46,6 @@ class GuestsController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:funeral_id])
   end
 end

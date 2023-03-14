@@ -1,6 +1,7 @@
 class VenuesController < ApplicationController
   before_action :set_funeral, only: %i[index show new create edit update destroy]
 
+
   def index
     @venues = Venue.all
     @markers = @venues.geocoded.map do |venue|
@@ -25,7 +26,7 @@ class VenuesController < ApplicationController
     @venue = Venue.new(venue_params)
     @venue.funeral = @funeral
     if @venue.save
-      redirect_to my_funeral_path(@funeral)
+      redirect_to funeral_path(@user.funerals.first)
     else
       render :new
     end
@@ -38,7 +39,7 @@ class VenuesController < ApplicationController
   def update
     @venue = Venue.find(params[:id])
     @venue.update(venue_params)
-    redirect_to my_funeral_path(@funeral)
+    redirect_to funeral_path(@user.funerals.first)
   end
 
   def destroy
@@ -55,5 +56,9 @@ class VenuesController < ApplicationController
 
   def set_funeral
     @funeral = Funeral.find(params[:funeral_id])
+  end
+
+  def set_user
+    @user = User.find(params[:funeral_id])
   end
 end
