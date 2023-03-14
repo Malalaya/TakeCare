@@ -1,5 +1,6 @@
 class FuneralHomesController < ApplicationController
   before_action :set_funeral, only: %i[show index new create edit update destroy]
+  before_action :set_user, only: %i[show index new create edit update destroy]
 
   # def new
   #   @funeral_home = FuneralHome.new
@@ -82,6 +83,10 @@ class FuneralHomesController < ApplicationController
 
   def funeral_home_params
     params.require(:funeral_home).permit(:name, :address)
+  end
+
+  def set_user
+    @user = User.find(params[:funeral_id])
   end
 
   def set_funeral
