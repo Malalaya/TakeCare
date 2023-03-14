@@ -14,7 +14,7 @@ class FuneralFlowersController < ApplicationController
     @funeral_flower = FuneralFlower.new(funeral_flower_params)
     @funeral_flower.funeral = @funeral
     if @funeral_flower.save
-      redirect_to my_funeral_path(@funeral)
+      redirect_to funeral_path(@funeral)
     else
       render :new
     end
@@ -26,8 +26,11 @@ class FuneralFlowersController < ApplicationController
 
   def update
     @funeral_flower = FuneralFlower.find(params[:id])
-    @funeral_flower.update(funeral_flower_params)
-    redirect_to my_funeral_path
+    if @funeral_flower.update(funeral_flower_params)
+      redirect_to funeral_path
+    else
+      render :edit
+    end
   end
 
   private

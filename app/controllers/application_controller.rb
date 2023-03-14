@@ -11,6 +11,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: %i[name surname avatar description address birthday])
   end
 
+  def admin_destroy_user
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to root_path
+  end
+
   private
 
   def set_current_user_funeral

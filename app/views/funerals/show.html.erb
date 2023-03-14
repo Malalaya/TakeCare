@@ -6,15 +6,15 @@
   <div class="intern">
     <h5>Flowers</h5>
     <div class="card-big funeral normal" style="background-image: url('<%= asset_path("flowers_image.jpg") %>'); background-size: cover;">
-      <% if @funeral.flower.present? %>
+      <% if @flower.present? %>
         <% if current_user == @funeral.user %>
-        <%= link_to @funeral.flower.name, edit_funeral_flower_path(@funeral, @funeral.flower) %>
+        <%= link_to @funeral.funeral_flower.flower.name, edit_funeral_funeral_flower_path(@funeral, @funeral.funeral_flower) %>
       <% else %>
-        <%= @funeral.flower.name %>
+        <%= @funeral.funeral_flower.flower.name %>
       <% end %>
       <% else %>
       <% if current_user == @funeral.user %>
-        <%= link_to 'Add Flower', new_funeral_flower_path(@funeral) %>
+        <%= link_to 'Add Flower', new_funeral_funeral_flower_path(@funeral) %>
       <% else %>
         Please add a flower
       <% end %>

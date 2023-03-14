@@ -50,5 +50,8 @@
   <% end %>
 
   <div class="button-blue">
-    <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
+    <%#= link_to "Cancel my account", registration_path(resource_name), data: { turbo_confirm: "Are you sure?" }, method: :delete %>
+    <%#= link_to 'Delete my account', user_registration_path, method: :delete if user_signed_in? %>
+    <%#= link_to 'Delete my account', funeral_path(current_user.funerals.first), method: :delete if user_signed_in? %>
+    <%= link_to "Delete Account", funeral_path(current_user.funerals.first), method: :delete, data: { confirm: "Are you sure?" } %>
   </div>

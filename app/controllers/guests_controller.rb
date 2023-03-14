@@ -21,8 +21,11 @@ class GuestsController < ApplicationController
 
   def update
     @guest = Guest.find(params[:id])
-    @guest.update(guest_params)
-    redirect_to my_funeral_path(@funeral)
+    if @guest.update(guest_params)
+    redirect_to funeral_path
+    else
+      render :edit
+    end
   end
 
   def destroy
