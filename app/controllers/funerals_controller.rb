@@ -50,8 +50,11 @@ class FuneralsController < ApplicationController
 
   def update
     @funeral = Funeral.find(params[:id])
-    @funeral.update(funeral_params)
-    redirect_to funeral_path(@funeral)
+    if @funeral.update(funeral_params)
+      redirect_to funeral_path(@funeral), notice: 'That was successful!'
+    else
+      render :edit
+    end
   end
 
   def destroy
