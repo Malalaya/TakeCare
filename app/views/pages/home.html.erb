@@ -15,17 +15,6 @@
         <% end %>
       <% end %>
     </div>
-
-    <h1>View your loved ones</h1>
-    <div class="cards">
-    <% if @relatives %>
-      <% @relatives.each do |relative| %>
-        <%= link_to userprofile_path(relative.user), class:"card-category", style: "background-image: url(#{relative.user.avatar.attached? ? cl_image_path(relative.user.avatar.key) : ""})" do %>
-        <h2><%= relative.user.name %></h2>
-        <% end %>
-      <% end %>
-    <% end %>
-    </div>
   </div>
 
     <% elsif %>

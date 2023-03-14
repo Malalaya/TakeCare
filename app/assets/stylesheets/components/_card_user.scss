@@ -58,6 +58,7 @@
 .intern {
   margin-top: 40px;
   margin-bottom: 20px;
+  min-width: 360px;
 }
 .card-big {
   display: flex;
@@ -102,6 +103,7 @@
 .container-small {
   display: flex;
   width: 100%;
+  justify-content: space-between;
 }
 
 .card-small-map {

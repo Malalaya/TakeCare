@@ -8,6 +8,7 @@ class FuneralsController < ApplicationController
     @venue = @funeral.venue
     @user = @funeral.user
     @active = :funeral
+
     @venue_markers = [{
       lat: @venue.latitude,
       lng: @venue.longitude
@@ -24,6 +25,7 @@ class FuneralsController < ApplicationController
       redirect_to root_path, notice: "Your account has been deleted."
     else
       redirect_to root_path, notice: "Your account could not be deleted."
+
     end
   end
 
@@ -33,6 +35,7 @@ class FuneralsController < ApplicationController
     @funeral_home = @funeral.funeral_home
     @guest = @funeral.guest
     @venue = @funeral.venue
+
     if @funeral.new_record?
       @funeral.save
     end
