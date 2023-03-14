@@ -1,0 +1,12 @@
+
+<% content_for :mainpage do %>
+
+<%= render "shared/user_navbar" %>
+
+<h1>documents</h1>
+  <%= simple_form_for @funeral do |f| %>
+  <%= f.file :documents, multiple: true %>
+  <%= f.submit 'Upload' %>
+<% end %>
+
+<% end %>

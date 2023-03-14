@@ -7,4 +7,5 @@ class Funeral < ApplicationRecord
   has_one :venue , dependent: :destroy
   validates :user, presence: true, uniqueness: true
   has_many :relatives, dependent: :destroy
+  has_many_attached :documents
 end
