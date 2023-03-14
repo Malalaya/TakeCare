@@ -1,66 +1,68 @@
-<br>
-<h1>Edit <%= resource_name.to_s.humanize %></h1>
-<br>
+<div class="container">
+  <h1>Edit <%= resource_name.to_s.humanize %></h1>
+  <br>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.error_notification %>
 
-    <div class="input-group">
-      <% if resource.background_picture.attached? %>
-        <%= cl_image_tag resource.background_picture.key, crop: :fill, class: "rounded" %>
-      <% else %>
-        <%= image_tag('flamingo.jpg', class: "rounded") %>
+      <div class="input-group">
+        <% if resource.background_picture.attached? %>
+          <%= cl_image_tag resource.background_picture.key, crop: :fill, class: "rounded" %>
+        <% else %>
+          <%= image_tag('flamingo.jpg', class: "rounded") %>
+        <% end %>
+        <%= f.file_field :background_picture %>
+      </div>
+
+      <div class="input-group">
+        <% if resource.avatar.attached? %>
+          <%= cl_image_tag resource.avatar.key, crop: :fill, class: "rounded" %>
+        <% else %>
+          <%= image_tag('user.svg', class: "rounded") %>
+        <% end %>
+        <%= f.file_field :avatar %>
+      </div>
+
+    <div class="form-inputs">
+      <%= f.input :email, required: true, autofocus: true %>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
       <% end %>
-      <%= f.file_field :background_picture %>
+
+      <%= f.input :name,
+      required: false %>
+      <%= f.input :surname,
+      required: false %>
+      <%= f.input :address,
+      required: false %>
+      <%= f.input :description,
+      required: false %>
+      <%= f.input :birthday, as: :date, start_year: Date.today.year - 100, end_year: Date.today.year %>
+      <%= f.input :password,
+                  hint: "leave it blank if you don't want to change it",
+                  required: false,
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  required: false,
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :current_password,
+                  hint: "we need your current password to confirm your changes",
+                  required: true,
+                  input_html: { autocomplete: "current-password" } %>
     </div>
 
-    <div class="input-group">
-      <% if resource.avatar.attached? %>
-        <%= cl_image_tag resource.avatar.key, crop: :fill, class: "rounded" %>
-      <% else %>
-        <%= image_tag('user.svg', class: "rounded") %>
-      <% end %>
-      <%= f.file_field :avatar %>
+    <div class="button-blue form-actions">
+      <%= f.button :submit, "Update" %>
     </div>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :name,
-    required: false %>
-    <%= f.input :surname,
-    required: false %>
-    <%= f.input :address,
-    required: false %>
-    <%= f.input :description,
-    required: false %>
-    <%= f.input :birthday, as: :date, start_year: Date.today.year - 100, end_year: Date.today.year %>
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-  </div>
+    <div class="button-blue">
+      <%#= link_to "Cancel my account", registration_path(resource_name), data: { turbo_confirm: "Are you sure?" }, method: :delete %>
+      <%#= link_to 'Delete my account', user_registration_path, method: :delete if user_signed_in? %>
+      <%#= link_to 'Delete my account', funeral_path(current_user.funerals.first), method: :delete if user_signed_in? %>
+      <%= link_to "Delete Account", funeral_path(current_user.funerals.first), method: :delete, data: { confirm: "Are you sure?" } %>
+    </div>
 
-  <div class="button-blue form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-
-  <% end %>
-
-  <div class="button-blue">
-    <%#= link_to "Cancel my account", registration_path(resource_name), data: { turbo_confirm: "Are you sure?" }, method: :delete %>
-    <%#= link_to 'Delete my account', user_registration_path, method: :delete if user_signed_in? %>
-    <%#= link_to 'Delete my account', funeral_path(current_user.funerals.first), method: :delete if user_signed_in? %>
-    <%= link_to "Delete Account", funeral_path(current_user.funerals.first), method: :delete, data: { confirm: "Are you sure?" } %>
   </div>
