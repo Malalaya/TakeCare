@@ -1,6 +1,7 @@
 class FuneralFlowersController < ApplicationController
 
   before_action :set_funeral
+  before_action :set_user
 
   # def show
   #   @funeral_flower = FuneralFlower.find(params[:id])
@@ -14,7 +15,7 @@ class FuneralFlowersController < ApplicationController
     @funeral_flower = FuneralFlower.new(funeral_flower_params)
     @funeral_flower.funeral = @funeral
     if @funeral_flower.save
-      redirect_to funeral_path(@funeral)
+      redirect_to funeral_path(@user.funerals.first)
     else
       render :new
     end
@@ -27,7 +28,7 @@ class FuneralFlowersController < ApplicationController
   def update
     @funeral_flower = FuneralFlower.find(params[:id])
     if @funeral_flower.update(funeral_flower_params)
-      redirect_to funeral_path
+      redirect_to funeral_path(@user.funerals.first)
     else
       render :edit
     end
@@ -41,6 +42,10 @@ class FuneralFlowersController < ApplicationController
 
   def set_funeral
     @funeral = Funeral.find(params[:funeral_id])
+  end
+
+  def set_user
+    @user = User.find(params[:funeral_id])
   end
 
 end

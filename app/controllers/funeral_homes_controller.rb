@@ -37,7 +37,7 @@ class FuneralHomesController < ApplicationController
     @funeral_home = FuneralHome.new(funeral_home_params)
     @funeral_home.funeral = @funeral
     if @funeral_home.save
-      redirect_to my_funeral_path(@funeral)
+      redirect_to funeral_path(@user.funerals.first)
     else
       render :new
     end
@@ -53,7 +53,7 @@ class FuneralHomesController < ApplicationController
   def update
     @funeral_home = FuneralHome.find(params[:id])
     if @funeral_home.update(funeral_home_params)
-      redirect_to my_funeral_path(@funeral), notice: 'Funeral home was successfully updated.'
+      redirect_to funeral_path(@user.funerals.first), notice: 'Funeral home was successfully updated.'
     else
       render :edit
     end
