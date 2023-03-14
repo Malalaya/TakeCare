@@ -1,10 +1,12 @@
-<%= simple_form_for [@funeral, @relative] do |f| %>
-  <div class="form-inputs">
-    <%= f.association :user, collection: User.where.not(id: current_user.id),
-                      input_html: { multiple: false, data: { controller: "tom-select" }}     %>
-  </div>
+<div class = "container">
+  <%= simple_form_for [@funeral, @relative] do |f| %>
+    <div class="form-inputs">
+      <%= f.association :user, collection: User.where.not(id: current_user.id),
+                        input_html: { multiple: false, data: { controller: "tom-select" }}     %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, class: 'button-blue' %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit, class: 'button-blue' %>
+    </div>
+  <% end %>
+</div>

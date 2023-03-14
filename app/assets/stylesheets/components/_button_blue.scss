@@ -1,4 +1,4 @@
-.button-blue {display: flex;
+.button-blue {
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -35,7 +35,7 @@
     align-items: center;
   }
 
-  .btn {display: flex;
+  .btn {
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -66,6 +66,12 @@
     }
 
     .center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .button-center {
       display: flex;
       justify-content: center;
       align-items: center;
