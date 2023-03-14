@@ -8,14 +8,20 @@ class FuneralsController < ApplicationController
     @venue = @funeral.venue
     @user = @funeral.user
     @active = :funeral
-    @venue_markers = [{
-      lat: @venue.latitude,
-      lng: @venue.longitude
-    }] if @venue.geocoded?
-    @funeral_home_markers = [{
-      lat: @funeral_home.latitude,
-      lng: @funeral_home.longitude
-    }] if @funeral_home.geocoded?
+
+    if @venue.present? && @venue.geocoded?
+      @venue_markers = [{
+        lat: @venue.latitude,
+        lng: @venue.longitude
+      }]
+    end
+
+    if @funeral_home.present? && @funeral_home.geocoded?
+      @funeral_home_markers = [{
+        lat: @funeral_home.latitude,
+        lng: @funeral_home.longitude
+      }]
+    end
   end
 
   def my_funeral
@@ -24,6 +30,7 @@ class FuneralsController < ApplicationController
     @funeral_home = @funeral.funeral_home
     @guest = @funeral.guest
     @venue = @funeral.venue
+
     if @funeral.new_record?
       @funeral.save
     end
