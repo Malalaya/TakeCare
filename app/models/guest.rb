@@ -4,9 +4,9 @@ class Guest < ApplicationRecord
 
   def guest_count
     if guest_list.nil?
-      return 
+      return
     elsif guest_list.match?(/\d+/)
-      guest_list.contains?("/\d+/")
+      guest_list.contains?(/\d+/)
       return guest_list.scan(/\d+/).map(&:to_i).sum
     elsif guest_list.is_a?(String)
       guest_list.split(",").count

@@ -13,14 +13,10 @@
             <% if current_user == @funeral.user %>
             <%= link_to @funeral.funeral_flower.flower.name, edit_funeral_funeral_flower_path(@funeral, @funeral.funeral_flower) %>
           <% else %>
-            <%= @funeral.funeral_flower.flower.name %>
+            <%= link_to @funeral.funeral_flower.flower.name %>
           <% end %>
           <% else %>
-          <% if current_user == @funeral.user %>
             <%= link_to 'Add Flower', new_funeral_funeral_flower_path(@funeral) %>
-          <% else %>
-            Please add a flower
-          <% end %>
           <% end %>
         </div>
       </div>
@@ -65,24 +61,26 @@
             <% end %>
           </div>
         </div>
-
-
-
-
-      <div class="intern">
-        <h5>Number of Guests</h5>
-        <div class="card-big funeral normal" style="background-image: url('<%= asset_path("people.jpg") %>'); background-size: cover;">
-          <% if @funeral.guest.present? %>
-            <% if current_user == @funeral.user %>
-              <%= link_to "Guests: " + @funeral.guest.guest_count.to_s, edit_funeral_guest_path(@funeral, @funeral.guest) %>
-            <% else %>
-              <%= "Guests: " + @funeral.guest.guest_count.to_s %>
-            <% end %>
-          <% else %>
-          <%= link_to 'Add Guests', new_funeral_guest_path(@funeral) %>
-          <% end %>
-        </div>
       </div>
+
+          <div class="intern">
+            <h5>Number of Guests</h5>
+            <div class="card-big funeral normal" style="background-image: url('<%= asset_path("people.jpg") %>'); background-size: cover;">
+              <% if @funeral.guest.present? %>
+                <% if current_user == @funeral.user %>
+                  <%= link_to "Guests: " + @funeral.guest.guest_count.to_s, edit_funeral_guest_path(@funeral, @funeral.guest) %>
+                <% else %>
+                  <% if @funeral.guest.present? %>
+                    <%= link_to "Guests: " + (@funeral.guest.guest_list.match?(/\d+/) ? @funeral.guest.guest_list.scan(/\d+/).map(&:to_i).sum.to_s : @funeral.guest.guest_list.split(",").count.to_s) %>
+                  <% else %>
+                    <%= link_to "Guests: 0" %>
+                  <% end %>
+                <% end %>
+              <% else %>
+              <%= link_to 'Add Guests', new_funeral_guest_path(@funeral) %>
+              <% end %>
+            </div>
+          </div>
 
       <% if user_signed_in? && current_user.id == @user.id %>
       <div class="intern">
