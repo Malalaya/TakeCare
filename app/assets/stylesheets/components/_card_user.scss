@@ -90,6 +90,21 @@
   justify-content: center;
 }
 
+.card-big-map{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: #FFFFFF;
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  height:250px;
+  text-align: center;
+  justify-content: center;
+}
+
 .card-big a{
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
   color:white;
@@ -153,4 +168,3 @@
 .mapboxgl-ctrl-top-right{
   display: none;
 }
-
