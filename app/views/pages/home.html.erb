@@ -15,19 +15,17 @@
         <% end %>
       <% end %>
     </div>
-  </div>
+      <% elsif %>
+        <h1>Connect with your Family</h1>
+          <br>
 
-    <% elsif %>
-      <h1>Connect with your Family</h1>
+          <% else %>
 
-        <br>
-
-        <% else %>
-
-        <h1>Register now to be prepared</h1>
-        <%= link_to "Register now", new_user_session_path, class: "button-blue" %>
-    <% end %>
-    <%= render "components/cardssquare" %>
+          <h1>Register now to be prepared</h1>
+          <%= link_to "Register now", new_user_session_path, class: "button-blue" %>
+      <% end %>
+      <%= render "components/cardssquare" %>
+    </div>
   </div>
 
 <% end %>
