@@ -5,13 +5,13 @@ $body-font: "Raleway";
 $headers-font: "Raleway";
 
 h1 {
-  color: $blue;
+  color: $dark-blue;
   font-size: 48px;
 }
 
 h2 {
   font-size: 36px;
-  color: $black;
+  color: $dark-blue;
 }
 
 h3 {
@@ -36,5 +36,5 @@ h6 {
 }
 
 p {
-  color: $black;
+  color: $blue;
 }

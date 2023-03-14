@@ -30,12 +30,11 @@
         <%= link_to "Funeral", funeral_path(@user.funerals.first), class: "#{'active' if @active == :funeral}"  %>
         <% end %>
 
-        <% if user_signed_in? %>
-        <%= link_to "Informal Will", ""%>
-        <% end %>
-
         <% if user_signed_in?%>
         <%= link_to "Documents", documents_funeral_path(@funeral)%>
+        
+        <% if user_signed_in? %>
+        <%= link_to "Informal Will", ""%>
         <% end %>
 
     </div>

@@ -5,7 +5,8 @@
 
     <% if user_signed_in? %>
 
-    <h1>Take care of your loved ones</h1>
+    <h1>Celebrating Life and Legacy</h1>
+    <h2>Discover Profiles and Wishes of Friends and Family</h2>
     <div class="cards">
       <% if @relatives2 %>
         <% @relatives2.each do |relative2| %>
@@ -15,19 +16,18 @@
         <% end %>
       <% end %>
     </div>
-  </div>
+      <% elsif %>
+        <h1>Connect with your Family</h1>
+          <br>
 
-    <% elsif %>
-      <h1>Connect with your Family</h1>
+          <% else %>
 
-        <br>
-
-        <% else %>
-
-        <h1>Register now to be prepared</h1>
-        <%= link_to "Register now", new_user_session_path, class: "button-blue" %>
-    <% end %>
-    <%= render "components/cardssquare" %>
+          <h1>Register now to be prepared</h1>
+          <%= link_to "Register now", new_user_session_path, class: "button-blue" %>
+      <% end %>
+      <br>
+      <%= render "components/cardssquare" %>
+    </div>
   </div>
 
 <% end %>
