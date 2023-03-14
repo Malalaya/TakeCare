@@ -1,10 +1,10 @@
 class Funeral < ApplicationRecord
-  belongs_to :user, dependent: :destroy
-  has_one :funeral_flower
-  has_many :flowers, through: :funeral_flower
-  has_one :guest
-  has_one :funeral_home
-  has_one :venue
+  belongs_to :user
+  has_one :funeral_flower, dependent: :destroy
+  has_many :flowers, through: :funeral_flower, dependent: :destroy
+  has_one :guest, dependent: :destroy
+  has_one :funeral_home, dependent: :destroy
+  has_one :venue , dependent: :destroy
   validates :user, presence: true, uniqueness: true
-  has_many :relatives
+  has_many :relatives, dependent: :destroy
 end

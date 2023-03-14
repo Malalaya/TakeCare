@@ -1,7 +1,7 @@
 class FuneralsController < ApplicationController
 
   def show
-    @funeral = Funeral.find_or_create_by(user_id: current_user.id)
+    @funeral = Funeral.find(params[:id])
     @flower = @funeral.funeral_flower
     @funeral_home = @funeral.funeral_home
     @guest = @funeral.guest
@@ -9,18 +9,23 @@ class FuneralsController < ApplicationController
     @user = @funeral.user
     @active = :funeral
 
-    if @venue.present? && @venue.geocoded?
-      @venue_markers = [{
-        lat: @venue.latitude,
-        lng: @venue.longitude
-      }]
-    end
+    @venue_markers = [{
+      lat: @venue.latitude,
+      lng: @venue.longitude
+    }] if @venue&.geocoded?
+    @funeral_home_markers = [{
+      lat: @funeral_home.latitude,
+      lng: @funeral_home.longitude
+    }] if @funeral_home&.geocoded?
+  end
 
-    if @funeral_home.present? && @funeral_home.geocoded?
-      @funeral_home_markers = [{
-        lat: @funeral_home.latitude,
-        lng: @funeral_home.longitude
-      }]
+  def destroy
+    @funeral = Funeral.find(params[:id])
+    if @funeral.destroy
+      redirect_to root_path, notice: "Your account has been deleted."
+    else
+      redirect_to root_path, notice: "Your account could not be deleted."
+
     end
   end
 

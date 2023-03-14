@@ -6,24 +6,23 @@
 
   <div class="intern">
     <h5>Flowers</h5>
+
+    <div class="card-big funeral normal" style="background-image: url('<%= asset_path("flowers_image.jpg") %>'); background-size: cover;">
       <% if @flower.present? %>
-      <% if current_user == @funeral.user %>
-      <div class="card-big funeral normal" style="background-image: url('<%= cl_image_path(@funeral.flowers.first.photo.key) %>'); background-size: cover;">
-        <%= link_to @funeral.funeral_flower.flower.name, edit_funeral_funeral_flower_path(@funeral, @funeral.funeral_flower) %>
-        <%#= image_tag @funeral.flowers.first.photo %>
-        <% else %>
-          <%= @funeral.flower.name %>
-        <% end %>
-      </div>
-      <% else %>
-      <div class="card-big funeral normal" style="background-image: url('<%= asset_path("flowers_image.jpg") %>'); background-size: cover;">
         <% if current_user == @funeral.user %>
-          <%= link_to 'Add Flower', new_funeral_funeral_flower_path(@funeral) %>
-        <% else %>
-          Please add a flower
-        <% end %>
-        <% end %>
+        <%= link_to @funeral.funeral_flower.flower.name, edit_funeral_funeral_flower_path(@funeral, @funeral.funeral_flower) %>
+      <% else %>
+        <%= @funeral.funeral_flower.flower.name %>
+      <% end %>
+      <% else %>
+      <% if current_user == @funeral.user %>
+        <%= link_to 'Add Flower', new_funeral_funeral_flower_path(@funeral) %>
+      <% else %>
+        Please add a flower
+      <% end %>
+      <% end %>
       </div>
+    </div>
 
   <div class = "container-small">
 
