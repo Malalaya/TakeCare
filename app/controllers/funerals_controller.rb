@@ -23,6 +23,11 @@ class FuneralsController < ApplicationController
   end
 
   def informal_will
+    @funeral = Funeral.find(params[:id])
+  end
+
+  def health
+    @funeral = Funeral.find(params[:id])
   end
 
   def my_funeral
@@ -59,7 +64,15 @@ class FuneralsController < ApplicationController
     @funeral = Funeral.find(params[:id])
 
     if @funeral.update(funeral_params)
-      redirect_to funeral_path(@funeral), notice: 'That was successful!'
+      if params[:funeral][:informal_will].present?
+        redirect_to informal_will_funeral_path(@funeral)
+      elsif params[:funeral][:documents].present?
+        redirect_to documents_funeral_path(@funeral)
+      elsif params[:funeral][:health].present?
+        redirect_to health_funeral_path(@funeral)
+      else
+        redirect_to funeral_path(@funeral), notice: 'That was successful!'
+      end
     else
       render :edit
     end
@@ -84,6 +97,6 @@ class FuneralsController < ApplicationController
 
 
   def funeral_params
-    params.require(:funeral).permit(:user_id, documents: [])
+    params.require(:funeral).permit(:user_id, :informal_will, :health, documents: [])
   end
 end

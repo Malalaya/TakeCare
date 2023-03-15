@@ -24,7 +24,7 @@
         <% end %>
 
         <% if user_signed_in? %>
-        <%= link_to "Health", "" %>
+        <%= link_to "Health", health_funeral_path(@funeral) %>
         <% end %>
 
         <% if user_signed_in? && @user.funerals.any? %>

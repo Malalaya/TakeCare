@@ -8,4 +8,6 @@ class Funeral < ApplicationRecord
   validates :user, presence: true, uniqueness: true
   has_many :relatives, dependent: :destroy
   has_many_attached :documents
+  has_rich_text :informal_will
+  has_rich_text :health
 end

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     member do
       get :documents
       get :informal_will
+      get :health
     end
   end
   resources :users, only: %i[show edit update destroy]

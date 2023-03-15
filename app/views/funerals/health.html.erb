@@ -1,17 +1,17 @@
-<h1>informal will page</h1>
+<h1>health page</h1>
 
-<h1>informal will uploaded</h1>
+<h1>uploaded health stuff</h1>
 
-<p><%= @funeral.informal_will %></p>
+<p><%= @funeral.health %></p>
 
 
 
-<h1>write your informal will</h1>
+<h1>write your health stuff</h1>
 
 <%= simple_form_for(@funeral) do |f| %>
   <!-- insert these three line of code below -->
   <div class="form-inputs">
-    <%= f.rich_text_area :informal_will %>
+    <%= f.rich_text_area :health %>
   </div>
 
   <div class="form-actions">
