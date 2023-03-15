@@ -81,13 +81,8 @@
                     <%= link_to "Guests: 0" %>
                   <% end %>
                 <% end %>
-
               <% else %>
-                <%= link_to "Guests: 0" %>
-              <% end %>
-            <% end %>
-          <% else %>
-          <%= link_to 'Add Guests', new_funeral_guest_path(@funeral) %>
+            <%= link_to 'Add Guests', new_funeral_guest_path(@funeral) %>
           <% end %>
         </div>
       </div>
