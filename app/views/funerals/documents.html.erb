@@ -8,7 +8,7 @@
   <% if @funeral.documents.attached? %>
       <% @funeral.documents.each do |document| %>
         <div style="header">
-          <h1>  My Will</h1>
+          <h1> My Will</h1>
         </div>
           <%= cl_image_tag(document.key, controls: true, width: 300, height: 300, crop: :limit) %>
           <%#= link_to "Download", cl_image_path(document.key), target: :blank %>
