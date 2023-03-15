@@ -35,7 +35,7 @@
               <% end %>
             </div>
             <% else %>
-            <div class="card-big-map funeral big" style="background-image: url('<%= asset_path("people.jpg") %>'); background-size: cover;">
+            <div class="card-big-map funeral big" style="background-image: url('<%= asset_path("funeralhome_banner.jpg") %>'); background-size: cover;">
               <% if current_user == @funeral.user %>
                 <%= link_to 'Add Funeral Home', new_funeral_funeral_home_path(@funeral) %>
               <% else %>
@@ -56,7 +56,7 @@
               <% end %>
           </div>
           <% else %>
-          <div class="card-big-map funeral" style="background-image: url('<%= asset_path("people.jpg") %>'); background-size: cover;">
+          <div class="card-big-map funeral" style="background-image: url('<%= asset_path("venue_banner.jpg") %>'); background-size: cover;">
             <%= link_to 'Add Venue', new_funeral_venue_path(@funeral) %>
             <% end %>
           </div>
@@ -64,7 +64,7 @@
 
           <div class="intern">
             <h5>Number of Guests</h5>
-            <div class="card-big funeral normal" style="background-image: url('<%= asset_path("people.jpg") %>'); background-size: cover;">
+            <div class="card-big funeral normal" style="background-image: url('<%= asset_path("numberofguests_banner.jpg") %>'); background-size: cover;">
               <% if @funeral.guest.present? %>
                 <% if current_user == @funeral.user %>
                   <%= link_to "Guests: " + @funeral.guest.guest_count.to_s, edit_funeral_guest_path(@funeral, @funeral.guest) %>
