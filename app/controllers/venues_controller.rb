@@ -1,5 +1,6 @@
 class VenuesController < ApplicationController
   before_action :set_funeral, only: %i[index show new create edit update destroy]
+  before_action :set_user, only: %i[index show new create edit update destroy]
 
 
   def index

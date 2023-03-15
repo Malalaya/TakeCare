@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     resources :venues, only: %i[index new show create edit update destroy]
     resources :funeral_homes, only: %i[index show new create edit update destroy]
     resources :relatives, only: %i[new show create]
+    member do
+      get :documents
+    end
   end
   resources :users, only: %i[show edit update destroy]
   # delete "users/:id", to: "users#destroy", as: "delete_user"

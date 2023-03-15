@@ -2,6 +2,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
   before_action :set_funeral, only: %i[my_funeral home]
   # ~before_action :set_relative, only: %i[home]
+  before_action :set_user, only: %i[documents]
+  before_action :everything, only: %i[my_funeral user_profile]
 
   def home
     if user_signed_in?
@@ -28,6 +30,7 @@ class PagesController < ApplicationController
   def user_profile
     @user = User.find(params[:id])
     @active = :relative
+    @relatives = @current_user.relatives
   end
 
   private
@@ -41,7 +44,7 @@ class PagesController < ApplicationController
   # end
 
   def set_user
-    @user = User.find(params[:user_id])
+    @user = current_user
   end
 
   def set_venue
@@ -58,5 +61,14 @@ class PagesController < ApplicationController
 
   def set_guest
     @guest = Guest.find(params[:guest_id])
+  end
+
+  def everything
+    @funeral = Funeral.find(params[:id])
+    @flower = @funeral.funeral_flower
+    @funeral_home = @funeral.funeral_home
+    @guest = @funeral.guest
+    @venue = @funeral.venue
+    @user = @funeral.user
   end
 end

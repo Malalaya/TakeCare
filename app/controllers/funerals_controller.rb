@@ -1,32 +1,25 @@
 class FuneralsController < ApplicationController
+  before_action :everything, only: [:show, :documents, :my_funeral, :edit, :update, :destroy]
 
   def show
-    @funeral = Funeral.find(params[:id])
-    @flower = @funeral.funeral_flower
-    @funeral_home = @funeral.funeral_home
-    @guest = @funeral.guest
-    @venue = @funeral.venue
-    @user = @funeral.user
     @active = :funeral
 
     @venue_markers = [{
       lat: @venue.latitude,
-      lng: @venue.longitude
+      lng: @venue.longitude,
+      info_window_html: render_to_string(partial: "info_window", locals: {venue: @venue}),
+      marker_html: render_to_string(partial: "marker", locals: {venue: @venue}),
     }] if @venue&.geocoded?
     @funeral_home_markers = [{
       lat: @funeral_home.latitude,
-      lng: @funeral_home.longitude
+      lng: @funeral_home.longitude,
+      info_window_html: render_to_string(partial: "info_window", locals: {funeral_home: @funeral_home}),
+      marker_html: render_to_string(partial: "marker", locals: {funeral_home: @funeral_home}),
     }] if @funeral_home&.geocoded?
   end
 
-  def destroy
-    @funeral = Funeral.find(params[:id])
-    if @funeral.destroy
-      redirect_to root_path, notice: "Your account has been deleted."
-    else
-      redirect_to root_path, notice: "Your account could not be deleted."
-
-    end
+  def documents
+    @active = :documents
   end
 
   def my_funeral
@@ -61,8 +54,12 @@ class FuneralsController < ApplicationController
 
   def update
     @funeral = Funeral.find(params[:id])
-    @funeral.update(funeral_params)
-    redirect_to funeral_path(@user.funerals.first)
+
+    if @funeral.update(funeral_params)
+      redirect_to funeral_path(@funeral), notice: 'That was successful!'
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -73,7 +70,17 @@ class FuneralsController < ApplicationController
 
   private
 
+  def everything
+    @funeral = Funeral.find(params[:id])
+    @flower = @funeral.funeral_flower
+    @funeral_home = @funeral.funeral_home
+    @guest = @funeral.guest
+    @venue = @funeral.venue
+    @user = @funeral.user
+  end
+
+
   def funeral_params
-    params.require(:funeral).permit(:user_id)
+    params.require(:funeral).permit(:user_id, documents: [])
   end
 end

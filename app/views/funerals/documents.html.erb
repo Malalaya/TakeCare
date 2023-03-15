@@ -1,0 +1,43 @@
+
+<% content_for :mainpage do %>
+
+<%= render "shared/user_navbar" %>
+
+<div class="container">
+
+  <% if @funeral.documents.attached? %>
+      <% @funeral.documents.each do |document| %>
+        <div style="header">
+          <h1>  My Will</h1>
+        </div>
+          <%= cl_image_tag(document.key, controls: true, width: 300, height: 300, crop: :limit) %>
+          <%#= link_to "Download", cl_image_path(document.key), target: :blank %>
+          <%= link_to document.filename, rails_blob_url(document, disposition: 'attachment'), target: :blank %>
+      <% end %>
+
+  <br>
+  <br>
+  <br>
+
+    <div style="header">
+      <h4>Upload more Documents</h4>
+    </div>
+    <%= simple_form_for @funeral do |f| %>
+    <%= f.file_field :documents, multiple: true %>
+    <%= f.submit 'Upload', class: 'button-blue' %>
+  <% end %>
+
+  <br>
+
+
+  <% else %>
+    <div style="header">
+      <h1>Upload your Documents</h1>
+    </div>
+    <%= simple_form_for @funeral do |f| %>
+    <%= f.file_field :documents, multiple: true %>
+    <%= f.submit 'Upload Will', class: 'button-blue' %>
+    <% end %>
+    <% end %>
+</div>
+<% end %>
