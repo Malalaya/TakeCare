@@ -36,6 +36,7 @@
     <div style="header">
       <h1>Upload Documents</h1>
     </div>
+    <div class="card-will">
       <%= simple_form_for @funeral do |f| %>
         <div class="container-button-right">
       <%= f.file_field :documents, multiple: true %>
@@ -43,6 +44,7 @@
           <%= f.submit 'Upload Will', class: 'button-blue' %>
         </div>
       </div>
+    </div>
     <% end %>
     <% end %>
 </div>
