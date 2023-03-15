@@ -1,5 +1,6 @@
 class RelativesController < ApplicationController
   before_action :set_funeral, only: %i[show create new edit update destroy]
+  before_action :set_user, only: %i[show create new edit update destroy]
 
   def new
     @relative = Relative.new
@@ -19,7 +20,7 @@ class RelativesController < ApplicationController
         @relative.user = user
         @relative.funeral = @funeral
         @relative.save
-        redirect_to userprofile_path(user)
+        redirect_to funeral_path(@user.funerals.first)
       end
     else
       render :new, status: :unprocessable_entity
@@ -53,5 +54,9 @@ class RelativesController < ApplicationController
 
   def set_funeral
     @funeral = Funeral.find(params[:funeral_id])
+  end
+
+  def set_user
+    @user = User.find(params[:funeral_id])
   end
 end

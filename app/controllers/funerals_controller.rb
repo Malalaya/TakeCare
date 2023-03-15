@@ -6,12 +6,15 @@ class FuneralsController < ApplicationController
 
     @venue_markers = [{
       lat: @venue.latitude,
-      lng: @venue.longitude
+      lng: @venue.longitude,
+      info_window_html: render_to_string(partial: "info_window", locals: {venue: @venue}),
+      marker_html: render_to_string(partial: "marker", locals: {venue: @venue}),
     }] if @venue&.geocoded?
     @funeral_home_markers = [{
       lat: @funeral_home.latitude,
       lng: @funeral_home.longitude,
       info_window_html: render_to_string(partial: "info_window", locals: {funeral_home: @funeral_home}),
+      marker_html: render_to_string(partial: "marker", locals: {funeral_home: @funeral_home}),
     }] if @funeral_home&.geocoded?
   end
 
