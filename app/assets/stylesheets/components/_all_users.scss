@@ -1,7 +1,8 @@
 .cards {
+  margin-top: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 30px;
+  grid-gap: 25px;
   justify-items: center;
 }
 
@@ -15,6 +16,14 @@
   background-position: center center;
 }
 
+.smaller{
+  height: 220px;
+  width: 220px;
+}
+
+.margin-bottom{
+margin-bottom: 70px;
+}
 .card-category img{
   object-fit: cover;
 }
