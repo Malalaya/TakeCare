@@ -32,6 +32,7 @@ export default class extends Controller {
         .setLngLat([marker.lng, marker.lat])
         .setPopup(popup)
         .addTo(this.map)
+
       })
     }
   }
@@ -43,3 +44,31 @@ export default class extends Controller {
   }
 
 }
+
+
+
+// #addMarkersToMap() {
+//   if (this.markersValue) {
+//     this.markersValue.forEach((marker) => {
+//       // Create a new custom marker element
+//       const customMarker = document.createElement("div")
+//       customMarker.style.backgroundImage = `url('${marker.icon_url}')`
+//       customMarker.style.backgroundSize = "contain"
+//       customMarker.style.width = "50px"
+//       customMarker.style.height = "50px"
+
+//       // Create a new popup for the marker
+//       const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(marker.info_window_html)
+
+//       // Create a new Mapbox marker with the custom marker element and popup
+//       new mapboxgl.Marker(customMarker)
+//         .setLngLat([marker.lng, marker.lat])
+//         .setPopup(popup)
+//         .addTo(this.map)
+//     })
+//   }
+// }
+
+// const marker = {
+//   icon_url: "https://example.com/my-marker-icon.png",
+// };
