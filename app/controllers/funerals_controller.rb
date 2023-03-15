@@ -10,7 +10,8 @@ class FuneralsController < ApplicationController
     }] if @venue&.geocoded?
     @funeral_home_markers = [{
       lat: @funeral_home.latitude,
-      lng: @funeral_home.longitude
+      lng: @funeral_home.longitude,
+      info_window_html: render_to_string(partial: "info_window", locals: {funeral_home: @funeral_home}),
     }] if @funeral_home&.geocoded?
   end
 
@@ -50,8 +51,12 @@ class FuneralsController < ApplicationController
 
   def update
     @funeral = Funeral.find(params[:id])
-    @funeral.update(funeral_params)
-    redirect_to funeral_path(@funeral), notice: 'That was succesful'
+
+    if @funeral.update(funeral_params)
+      redirect_to funeral_path(@funeral), notice: 'That was successful!'
+    else
+      render :edit
+    end
   end
 
   def destroy
