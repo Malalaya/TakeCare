@@ -28,7 +28,10 @@
             <% if !current_user.funerals%>
               <a class="dropdown-item" href="<%= funeral_path(@current_user_funeral) %>">My Funeral</a>
             <% else %>
+              <a class="dropdown-item" href="<%= health_funeral_path(current_user.funerals.first) %>">My Health</a>
               <a class="dropdown-item" href="<%= funeral_path(current_user.funerals.first) %>">My Funeral</a>
+              <a class="dropdown-item" href="<%= documents_funeral_path(current_user.funerals.first) %>">My Documents</a>
+              <a class="dropdown-item" href="<%= informal_will_funeral_path(current_user.funerals.first) %>">My Informal Will</a>
             <% end %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
