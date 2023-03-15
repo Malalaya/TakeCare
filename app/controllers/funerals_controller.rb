@@ -51,7 +51,7 @@ class FuneralsController < ApplicationController
   def update
     @funeral = Funeral.find(params[:id])
     @funeral.update(funeral_params)
-    redirect_to funeral_path(@funeral)
+    redirect_to funeral_path(@funeral), notice: 'That was succesful'
   end
 
   def destroy
