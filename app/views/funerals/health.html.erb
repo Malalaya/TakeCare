@@ -1,20 +1,28 @@
-<h1>health page</h1>
+<% content_for :mainpage do %>
 
-<h1>uploaded health stuff</h1>
+<%= render "shared/user_navbar" %>
 
-<p><%= @funeral.health %></p>
+<div class="container">
+  <h1>My Health</h1>
 
+  <p><%= @funeral.health %></p>
 
+  <%= simple_form_for(@funeral) do |f| %>
+    <!-- insert these three line of code below -->
+    <div class="form-inputs">
+      <%= f.rich_text_area :health %>
+    </div>
 
-<h1>write your health stuff</h1>
+  <br>
 
-<%= simple_form_for(@funeral) do |f| %>
-  <!-- insert these three line of code below -->
-  <div class="form-inputs">
-    <%= f.rich_text_area :health %>
-  </div>
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <br>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <% end %>
+<br>
+<br>
+
+</div>
 <% end %>

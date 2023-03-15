@@ -1,20 +1,28 @@
-<h1>informal will page</h1>
+<% content_for :mainpage do %>
 
-<h1>informal will uploaded</h1>
+<%= render "shared/user_navbar" %>
 
-<p><%= @funeral.informal_will %></p>
+<div class="container">
+
+  <h1>Informal Will</h1>
+
+  <p><%= @funeral.informal_will %></p>
 
 
+  <%= simple_form_for(@funeral) do |f| %>
+    <!-- insert these three line of code below -->
+    <div class="form-inputs">
+      <%= f.rich_text_area :informal_will %>
+    </div>
+<br>
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+    <br>
 
-<h1>write your informal will</h1>
+  <% end %>
+<br>
+<br>
 
-<%= simple_form_for(@funeral) do |f| %>
-  <!-- insert these three line of code below -->
-  <div class="form-inputs">
-    <%= f.rich_text_area :informal_will %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+</div>
 <% end %>
