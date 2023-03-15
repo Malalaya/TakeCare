@@ -1,0 +1,20 @@
+<h1>informal will page</h1>
+
+<h1>informal will uploaded</h1>
+
+<p><%= @funeral.informal_will %></p>
+
+
+
+<h1>write your informal will</h1>
+
+<%= simple_form_for(@funeral) do |f| %>
+  <!-- insert these three line of code below -->
+  <div class="form-inputs">
+    <%= f.rich_text_area :informal_will %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
