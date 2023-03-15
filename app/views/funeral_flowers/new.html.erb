@@ -1,12 +1,14 @@
-<h1>Flowers new page</h1>
+<div class = "container">
+  <h1>Flowers</h1>
 
-<%= simple_form_for [@funeral, @funeral_flower] do |f| %>
-  <div class="form-inputs">
-    <%= f.input :flower_id, collection: Flower.all,
-                      input_html: { multiple: false, data: { controller: "tom-select" }}     %>
-  </div>
+  <%= simple_form_for [@funeral, @funeral_flower] do |f| %>
+    <div class="form-inputs">
+      <%= f.input :flower_id, collection: Flower.all,
+                        input_html: { multiple: false, data: { controller: "tom-select" }}     %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, class: 'btn btn-primary' %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit, class: 'button-blue', value: 'Edit' %>
+    </div>
+  <% end %>
+</div>
