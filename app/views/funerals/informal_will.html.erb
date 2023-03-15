@@ -3,26 +3,24 @@
 <%= render "shared/user_navbar" %>
 
 <div class="container">
-
   <h1>Informal Will</h1>
+  <div class="card-will">
+    <p><%= @funeral.informal_will %></p>
+  </div>
 
-  <p><%= @funeral.informal_will %></p>
+    <%= simple_form_for(@funeral) do |f| %>
+      <div class="form-inputs">
+        <%= f.rich_text_area :informal_will %>
+      </div>
+      <br>
 
+      <div class="form-actions">
+        <%= f.button :submit, value: 'Edit' %>
+      </div>
+      <br>
 
-  <%= simple_form_for(@funeral) do |f| %>
-    <!-- insert these three line of code below -->
-    <div class="form-inputs">
-      <%= f.rich_text_area :informal_will %>
-    </div>
-<br>
-    <div class="form-actions">
-      <%= f.button :submit %>
-    </div>
-    <br>
-
-  <% end %>
-<br>
-<br>
-
+    <% end %>
+  <br>
+  <br>
 </div>
 <% end %>

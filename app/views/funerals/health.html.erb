@@ -4,19 +4,18 @@
 
 <div class="container">
   <h1>My Health</h1>
+  <div class="card-will">
+    <p><%= @funeral.health %></p>
+  </div>
 
-  <p><%= @funeral.health %></p>
-
-  <%= simple_form_for(@funeral) do |f| %>
-    <!-- insert these three line of code below -->
-    <div class="form-inputs">
-      <%= f.rich_text_area :health %>
-    </div>
+    <%= simple_form_for(@funeral) do |f| %>
+      <div class="form-inputs">
+        <%= f.rich_text_area :health %>
+      </div>
 
   <br>
-
     <div class="form-actions">
-      <%= f.button :submit %>
+      <%= f.button :submit, value: 'Edit' %>
     </div>
   <br>
 
