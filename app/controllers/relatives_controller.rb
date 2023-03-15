@@ -20,7 +20,7 @@ class RelativesController < ApplicationController
         @relative.user = user
         @relative.funeral = @funeral
         @relative.save
-        redirect_to funeral_path(@user.funerals.first)
+        redirect_to userprofile_path(@user)
       end
     else
       render :new, status: :unprocessable_entity
@@ -34,7 +34,7 @@ class RelativesController < ApplicationController
   def update
     @relative = Relative.find(params[:id])
     if @relative.update_attributes(params[:relative])
-      redirect_to @relative, :notice  => "Successfully updated relative."
+      redirect_to @relative, :notice  => "Successfully updated."
     else
       render :action => 'edit'
     end
@@ -43,7 +43,7 @@ class RelativesController < ApplicationController
   def destroy
     @relative = Relative.find(params[:id])
     @relative.destroy
-    redirect_to relatives_url, :notice => "Successfully destroyed relative."
+    redirect_to relatives_url, :notice => "Successfully erased."
   end
 
   private

@@ -30,6 +30,7 @@ class PagesController < ApplicationController
   def user_profile
     @user = User.find(params[:id])
     @active = :relative
+    @relatives = @current_user.relatives
   end
 
   private
