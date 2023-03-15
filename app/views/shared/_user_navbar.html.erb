@@ -19,7 +19,7 @@
     </div>
 
     <div class="user-navbar">
-        <% if user_signed_in? && current_user.id == @user.id %>
+        <% if user_signed_in? %>
           <%= link_to "Profile", userprofile_path(@user), class: "#{'active' if @active == :relative}" %>
         <% end %>
 
