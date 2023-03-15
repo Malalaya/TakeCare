@@ -1,5 +1,5 @@
 class FuneralsController < ApplicationController
-  before_action :everything, only: [:show, :documents, :my_funeral, :edit, :update, :destroy]
+  before_action :everything, only: [:show, :documents, :my_funeral, :edit, :update, :destroy, :informal_will, :health]
 
   def show
     @active = :funeral

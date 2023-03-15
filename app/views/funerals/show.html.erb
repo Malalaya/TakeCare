@@ -24,10 +24,9 @@
 
         <div class="intern">
           <h5>Funeral Home</h5>
-          <%#= link_to @funeral.funeral_home.name, edit_funeral_funeral_home_path(@funeral, @funeral.funeral_home) %>
             <% if @funeral.funeral_home.present? %>
-            <p><%= link_to @funeral.funeral_home.name, edit_funeral_funeral_home_path(@funeral, @funeral.funeral_home) %></p>
-            <p><%= @funeral.funeral_home.address %></p>
+            <p>Name: <%= link_to @funeral.funeral_home.name, edit_funeral_funeral_home_path(@funeral, @funeral.funeral_home) %></p>
+            <p>Adress: <%= @funeral.funeral_home.address %></p>
             <div class="card-big-map funeral big" id="map" data-controller="map" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" data-map-markers-value="<%= @funeral_home_markers.to_json %>" >
               <% if current_user == @funeral.user %>
                 <%= link_to @funeral.funeral_home.name, edit_funeral_funeral_home_path(@funeral, @funeral.funeral_home) %>
@@ -48,10 +47,9 @@
 
         <div class="intern">
           <h5>Venue</h5>
-          <%#= link_to @funeral.venue.name, edit_funeral_venue_path(@funeral, @funeral.venue) %>
           <% if @funeral.venue.present? %>
-          <p><%= link_to @funeral.venue.name, edit_funeral_venue_path(@funeral, @funeral.venue) %></p>
-          <p><%=@funeral.venue.address%></p>
+          <p>Name: <%= link_to @funeral.venue.name, edit_funeral_venue_path(@funeral, @funeral.venue) %></p>
+          <p>Adress: <%=@funeral.venue.address%></p>
           <div class="card-big-map funeral" id="map" data-controller="map" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" data-map-markers-value="<%= @venue_markers.to_json %>" >
               <% if current_user == @funeral.user %>
                 <%= link_to @funeral.venue.name, edit_funeral_venue_path(@funeral, @funeral.venue) %>
