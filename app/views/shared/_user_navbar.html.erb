@@ -24,7 +24,7 @@
         <% end %>
 
         <% if user_signed_in? %>
-        <%= link_to "Health", health_funeral_path(@funeral) %>
+        <%= link_to "Health", health_funeral_path(@funeral), class: "#{'active' if @active == :health}" %>
         <% end %>
 
         <% if user_signed_in? && @user.funerals.any? %>
@@ -32,11 +32,11 @@
         <% end %>
 
         <% if user_signed_in?%>
-        <%= link_to "Documents", documents_funeral_path(@funeral)%>
+        <%= link_to "Documents", documents_funeral_path(@funeral), class: "#{'active' if @active == :documents}"%>
         <% end %>
 
         <% if user_signed_in? %>
-        <%= link_to "Informal Will", informal_will_funeral_path(@funeral)%>
+        <%= link_to "Informal Will", informal_will_funeral_path(@funeral), class: "#{'active' if @active == :informal_will}"%>
         <% end %>
     </div>
   </div>
