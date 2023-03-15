@@ -19,24 +19,29 @@
   <br>
   <br>
 
-    <div style="header">
-      <h4>Upload more Documents</h4>
-    </div>
+    <h4>Upload more Documents</h4>
     <%= simple_form_for @funeral do |f| %>
+    <div class="container-button-right">
     <%= f.file_field :documents, multiple: true %>
-    <%= f.submit 'Upload', class: 'button-blue' %>
-  <% end %>
-
+    <div class="button-right">
+      <%= f.submit 'Upload', class: 'button-blue' %>
+    </div>
+    <% end %>
+  </div>
   <br>
 
 
   <% else %>
     <div style="header">
-      <h1>Upload your Documents</h1>
+      <h1>Upload Documents</h1>
     </div>
-    <%= simple_form_for @funeral do |f| %>
-    <%= f.file_field :documents, multiple: true %>
-    <%= f.submit 'Upload Will', class: 'button-blue' %>
+      <%= simple_form_for @funeral do |f| %>
+        <div class="container-button-right">
+      <%= f.file_field :documents, multiple: true %>
+        <div class="button-right">
+          <%= f.submit 'Upload Will', class: 'button-blue' %>
+        </div>
+      </div>
     <% end %>
     <% end %>
 </div>
