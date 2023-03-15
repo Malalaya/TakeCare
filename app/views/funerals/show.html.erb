@@ -70,10 +70,9 @@
         </div>
 
         </div>
-
           <div class="intern">
             <h5>Number of Guests</h5>
-            <div class="card-big funeral normal" style="background-image: url('<%= asset_path("numberofguests_banner.jpg") %>'); background-size: cover;">
+            <div class="card-big funeral normal" style="background-image: url('<%= asset_path("guests_banner.png") %>'); background-size: cover;">
               <% if @funeral.guest.present? %>
                 <% if current_user == @funeral.user %>
                   <%= link_to "Guests: " + @funeral.guest.guest_count.to_s, edit_funeral_guest_path(@funeral, @funeral.guest) %>
