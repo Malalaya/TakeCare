@@ -16,6 +16,16 @@
         <% end %>
       <% end %>
     </div>
+
+    <% if user_signed_in?%>
+        <div class="intern">
+          <h3>Invite relatives & friends you trust to share your wishes</h3>
+          <div style="button text-align: center;">
+            <%= link_to "Invite", new_funeral_relative_path(@funeral), class: 'button-blue' %>
+          </div>
+        <% end %>
+      </div>
+
       <% elsif %>
         <h1>Connect with your Family</h1>
           <br>
@@ -29,5 +39,6 @@
       <%= render "components/cardssquare" %>
     </div>
   </div>
+</div>
 
 <% end %>
