@@ -19,9 +19,9 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options
-    { host: ENV["http://www.take-care.me"] || "localhost:3000" }
+    { host: ENV["https://git.heroku.com/arcane-crag-52178.git"] || "localhost:3000" }
   end
- 
+
   def user_route_path
     userprofile_path(current_user)
   end
