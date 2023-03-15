@@ -3,17 +3,22 @@
 <%= render "shared/user_navbar" %>
 
 <div class="container">
-  <div style="header">
-    <h1>Profile</h1>
+
+  <div class="container-button-right">
+    <div>
+      <h1>Profile</h1>
+    </div>
+
+    <% if user_signed_in? && current_user.id == @user.id %>
+    <div class="button-right">
+      <div>
+        <%= link_to "Edit", edit_user_registration_path, class: "button-blue" %>
+      </div>
+    </div>
+    <% end %>
   </div>
 
-  <% if user_signed_in? && current_user.id == @user.id %>
-  <div class="intern">
-    <div style="button-center">
-      <%= link_to "Edit ", edit_user_registration_path, class: "button-blue" %>
-    </div>
-  </div>
-  <% end %>
+
 
   <div class="intern">
     <h5>My thoughts</h5>
@@ -37,24 +42,14 @@
         <p>Email: <%= @user.email %></p>
       </div>
     </div>
-  </div>
-
-  <% if user_signed_in? && current_user.id == @user.id %>
-  <div class="intern">
-    <h3>Invite relatives & friends you trust to share your wishes</h3>
-    <div style="button text-align: center;">
-      <%= link_to "Invite", new_funeral_relative_path(@funeral), class: 'button-blue' %>
-    </div>
-  </div>
-  <% end %>
 
 <br>
 
-  <% if @relatives %>
+  <% if @relatives && user_signed_in? && current_user.id == @user.id%>
   <h1>Those are the loved ones you entrusted</h1>
-    <div class="cards">
+    <div class="cards margin-bottom">
         <% @relatives.each do |relative| %>
-          <%= link_to userprofile_path(relative.user), class:"card-category", style: "background-image: url(#{relative.user.avatar.attached? ? cl_image_path(relative.user.avatar.key) : ""})" do %>
+          <%= link_to userprofile_path(relative.user), class:"card-category smaller", style: "background-image: url(#{relative.user.avatar.attached? ? cl_image_path(relative.user.avatar.key) : ""})" do %>
           <h2><%= relative.user.name %></h2>
             <% end %>
           <% end %>
@@ -62,8 +57,15 @@
     </div>
   <% end %>
 
-</div>
+  <% if user_signed_in? && current_user.id == @user.id %>
+    <div class="intern">
+      <h3>Invite relatives & friends you trust to share your wishes</h3>
+      <div style="button text-align: center;">
+        <%= link_to "Invite", new_funeral_relative_path(@funeral), class: 'button-blue' %>
+      </div>
+    </div>
+    <% end %>
+  </div>
 
-<br>
-<br>
+</div>
 <% end %>
