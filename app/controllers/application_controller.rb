@@ -18,6 +18,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
+  def default_url_options
+    { host: ENV["http://www.take-care.me"] || "localhost:3000" }
+  end
+ 
   def user_route_path
     userprofile_path(current_user)
   end
