@@ -50,7 +50,7 @@
           <% if @funeral.venue.present? %>
           <p>Name: <%= link_to @funeral.venue.name, edit_funeral_venue_path(@funeral, @funeral.venue) %></p>
           <p>Adress: <%=@funeral.venue.address%></p>
-          <div class="card-big-map funeral" id="map" data-controller="map" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" data-map-markers-value="<%= @venue_markers.to_json %>" >
+          <div class="card-big-map funeral big" id="map" data-controller="map" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" data-map-markers-value="<%= @venue_markers.to_json %>" >
               <% if current_user == @funeral.user %>
                 <%= link_to @funeral.venue.name, edit_funeral_venue_path(@funeral, @funeral.venue) %>
               <% else %>
@@ -59,10 +59,10 @@
           </div>
           <% else %>
 
-          <div class="card-big-map funeral" style="background-image: url('<%= asset_path("venue_banner.jpg") %>'); background-size: cover;">
+          <div class="card-big-map funeral big" style="background-image: url('<%= asset_path("venue_banner.jpg") %>'); background-size: cover;">
             <%= link_to 'Add Venue', new_funeral_venue_path(@funeral) %>
-            <% end %>
           </div>
+            <% end %>
         </div>
 
         </div>
