@@ -23,10 +23,12 @@ class FuneralsController < ApplicationController
   end
 
   def informal_will
+    @active = :informal_will
     @funeral = Funeral.find(params[:id])
   end
 
   def health
+    @active = :health
     @funeral = Funeral.find(params[:id])
   end
 
