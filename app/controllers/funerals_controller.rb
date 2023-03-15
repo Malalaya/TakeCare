@@ -22,6 +22,9 @@ class FuneralsController < ApplicationController
     @active = :documents
   end
 
+  def informal_will
+  end
+
   def my_funeral
     @funeral = Funeral.find_or_create_by(user_id: current_user.id)
     @flower = @funeral.funeral_flower
