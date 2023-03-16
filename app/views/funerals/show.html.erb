@@ -27,7 +27,7 @@
 
       <div class = "container-small">
 
-        <div class="intern">
+        <div class="intern" style="max-width: 380px;">
           <h5>Funeral Home</h5>
             <% if @funeral.funeral_home.present? %>
             <p>Name: <%= link_to @funeral.funeral_home.name, edit_funeral_funeral_home_path(@funeral, @funeral.funeral_home) %></p>
@@ -50,7 +50,7 @@
             <% end %>
         </div>
 
-        <div class="intern">
+        <div class="intern" style="max-width: 380px;">
           <h5>Venue</h5>
           <% if @funeral.venue.present? %>
           <p>Name: <%= link_to @funeral.venue.name, edit_funeral_venue_path(@funeral, @funeral.venue) %></p>
