@@ -36,7 +36,7 @@
       required: false %>
       <%= f.input :address,
       required: false %>
-      <%= f.input :description,
+      <%= f.input :description, label: "Thoughts I want to share with my loved ones",
       required: false %>
       <%= f.input :birthday, as: :date, start_year: Date.today.year - 100, end_year: Date.today.year %>
       <%= f.input :password,
