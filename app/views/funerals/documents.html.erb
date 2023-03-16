@@ -11,7 +11,7 @@
           <h1> My Document</h1>
         </div>
         <div class="card-will">
-          <%= cl_image_tag(document.key, controls: true, width: 300, height: 300, crop: :limit) %>
+          <%#= cl_image_tag(document.key, controls: true, width: 300, height: 300, crop: :limit) %>
           <%#= link_to "Download", cl_image_path(document.key), target: :blank %>
           <%= link_to document.filename, rails_blob_url(document, disposition: 'attachment'), target: :blank %>
         </div>
