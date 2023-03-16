@@ -4,8 +4,9 @@
 <%= render "shared/user_navbar" %>
 
 <div class="container">
-    <h1>Documents</h1>
-<% if user_signed_in? && (@user == current_user || current_user.relatives.where(user_id: @user).exists?) %>
+    <h1>Document</h1>
+<% if user_signed_in? && (@user == current_user || current_user.invitations(@funeral).exists?) %>
+
 
   <% if @funeral.documents.attached? %>
       <% @funeral.documents.each do |document| %>

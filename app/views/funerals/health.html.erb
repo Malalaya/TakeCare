@@ -4,7 +4,7 @@
 
 <div class="container">
   <h1>Health</h1>
-  <% if user_signed_in? && (@user == current_user || current_user.relatives.where(user_id: @user).exists?) %>
+  <% if user_signed_in? && (@user == current_user || current_user.invitations(@funeral).exists?) %>
   <div class="card-will">
     <p><%= @funeral.health %></p>
   </div>

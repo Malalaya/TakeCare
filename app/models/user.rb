@@ -13,4 +13,8 @@ class User < ApplicationRecord
   def create_funeral
     Funeral.create(user: self)
   end
+
+  def invitations(funeral)
+    Relative.where(user: self, funeral: funeral)
+  end
 end
