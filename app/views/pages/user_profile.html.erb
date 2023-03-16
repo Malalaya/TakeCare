@@ -59,7 +59,8 @@
 
   <% if user_signed_in? && current_user.id == @user.id %>
     <div class="intern">
-      <h3>Invite relatives & friends you trust to share your wishes</h3>
+      <h5>Discuss your thoughts with friends & family</h5>
+      <h2>Share to TakeCare</h2>
       <div style="button text-align: center;">
         <%= link_to "Invite", new_funeral_relative_path(@funeral), class: 'button-blue' %>
       </div>

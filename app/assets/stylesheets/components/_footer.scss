@@ -9,14 +9,13 @@
 }
 
 .footer-social-icons {
-  padding: 40px 24px;
+  padding: 20px 24px;
 }
 
 .footer-social-icons-header {
   font-size: 14px;
   color: $blue;
   line-height: 24px;
-  text-transform: uppercase;
   font-weight: bold;
   margin: 0 0 6px;
 }
@@ -32,3 +31,6 @@
   margin: 5px 5;
 }
 
+footer-p p {
+  margin: 0;
+}
