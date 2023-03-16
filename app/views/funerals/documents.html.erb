@@ -4,11 +4,12 @@
 <%= render "shared/user_navbar" %>
 
 <div class="container">
+    <h1>Document</h1>
+<% if user_signed_in? && (@user == current_user || current_user.relatives.where(user_id: @user).exists?) %>
 
   <% if @funeral.documents.attached? %>
       <% @funeral.documents.each do |document| %>
         <div style="header">
-          <h1> My Document</h1>
         </div>
         <div class="card-will">
           <%= cl_image_tag(document.key, controls: true, width: 300, height: 300, crop: :limit) %>
@@ -48,4 +49,9 @@
     <% end %>
     <% end %>
 </div>
+<% else %>
+  <div class="card-will">
+    <p>Sorry, you are not authorized to view this page.</p>
+  </div>
+  <% end %>
 <% end %>

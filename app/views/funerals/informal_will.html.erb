@@ -4,6 +4,7 @@
 
 <div class="container">
   <h1>Informal Will</h1>
+<% if user_signed_in? && (@user == current_user || current_user.relatives.where(user_id: @user).exists?) %>
   <div class="card-will">
     <p><%= @funeral.informal_will %></p>
   </div>
@@ -23,4 +24,9 @@
   <br>
   <br>
 </div>
+<% else %>
+  <div class="card-will">
+    <p>Sorry, you are not authorized to view this page.</p>
+  </div>
+  <% end %>
 <% end %>
