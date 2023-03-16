@@ -5,6 +5,7 @@
 
 <div class="container">
     <h1>Document</h1>
+
 <% if user_signed_in? && (@user == current_user || current_user.invitations(@funeral).exists?) %>
 
 
