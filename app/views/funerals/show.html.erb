@@ -4,8 +4,7 @@
   <div class="container">
 
       <h1>Funeral Arrangements</h1>
-  <% if user_signed_in? && (@user == current_user || current_user.relatives.where(user_id: @user).exists?) %>
-
+  <% if user_signed_in? && (@user == current_user || current_user.invitations(@funeral).exists?) %>
       <div class="intern">
         <h5>Flowers</h5>
         <div class="card-big funeral normal" style="background-image: url('<%= if @funeral.funeral_flower && @funeral.funeral_flower.flower.photo.attached?
