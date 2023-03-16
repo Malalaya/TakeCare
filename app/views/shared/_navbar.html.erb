@@ -1,12 +1,24 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "logonew.png" %>
-    <% end %>
+    <div class="text-navbar">
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag "logo.svg" %>
+      <% end %>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+        <% if user_signed_in? %>
+          <%= link_to "My Wishes", userprofile_path(current_user.id), class: "text-navbar-child" %>
+        <% end %>
+
+        <% if user_signed_in? %>
+          <%= link_to "My Loved Ones", root_path, class: "text-navbar-child" %>
+        <% end %>
+    </div>
+
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
