@@ -3,7 +3,8 @@
 <%= render "shared/user_navbar" %>
 
 <div class="container">
-  <h1>My Health</h1>
+  <h1>Health</h1>
+  <% if user_signed_in? && (@user == current_user || current_user.relatives.where(user_id: @user).exists?) %>
   <div class="card-will">
     <p><%= @funeral.health %></p>
   </div>
@@ -24,4 +25,9 @@
 <br>
 
 </div>
+<% else %>
+  <div class="card-will">
+    <p>Sorry, you are not authorized to view this page.</p>
+  </div>
+  <% end %>
 <% end %>

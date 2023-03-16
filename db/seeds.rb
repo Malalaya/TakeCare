@@ -34,7 +34,7 @@ puts "Flowers destroyed"
 puts "Creating flowers"
 
 roses = Flower.new(name: "Roses")
-roses.photo.attach(io: URI.open('https://images.unsplash.com/photo-1518709779341-56cf4535e94b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'), filename: 'roses.jpg')
+roses.photo.attach(io: URI.open('https://images.photowall.com/products/61963/white-roses-on-black-background.jpg?h=699&q=85'), filename: 'roses.jpg')
 roses.save!
 lilies = Flower.new(name: "Lilies")
 lilies.photo.attach(io: URI.open('https://images.unsplash.com/photo-1567428051128-5f09a0200655?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'), filename: 'lilies.jpg')

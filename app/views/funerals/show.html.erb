@@ -4,10 +4,15 @@
   <div class="container">
 
       <h1>Funeral Arrangements</h1>
+  <% if user_signed_in? && (@user == current_user || current_user.relatives.where(user_id: @user).exists?) %>
 
       <div class="intern">
         <h5>Flowers</h5>
-        <div class="card-big funeral normal" style="background-image: url('<%= asset_path("flowers_image.jpg") %>'); background-size: cover;">
+        <div class="card-big funeral normal" style="background-image: url('<%= if @funeral.funeral_flower && @funeral.funeral_flower.flower.photo.attached?
+            cl_image_path(@funeral.funeral_flower.flower.photo.key)
+          else
+            asset_path("flowers.jpg")
+          end %>'); background-size: cover; background-position: center">
           <% if @flower.present? %>
             <% if current_user == @funeral.user %>
               <%= link_to @funeral.funeral_flower.flower.name, edit_funeral_funeral_flower_path(@funeral, @funeral.funeral_flower) %>
@@ -94,8 +99,13 @@
         </div>
       <% end %>
 
-     <br>
-      <br>
+        <br>
+        <br>
+    </div>
+<% else %>
+  <div class="card-will">
+    <p>Sorry, you are not authorized to view this page.</p>
   </div>
+  <% end %>
 
 <% end %>

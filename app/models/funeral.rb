@@ -1,7 +1,7 @@
 class Funeral < ApplicationRecord
   belongs_to :user
   has_one :funeral_flower, dependent: :destroy
-  has_many :flowers, through: :funeral_flower, dependent: :destroy
+  # has_many :flowers, through: :funeral_flower, dependent: :destroy
   has_one :guest, dependent: :destroy
   has_one :funeral_home, dependent: :destroy
   has_one :venue , dependent: :destroy
