@@ -18,11 +18,6 @@ module Takecare
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
     config.assets.initialize_on_precompile = false
-    config.middleware.insert_before(Rack::Runtime, Rack::Rewrite) do
-      r301 %r{.*}, "https://www.take-care.me$&", :if => Proc.new { |rack_env|
-        rack_env['SERVER_NAME'] == 'take-care.me'
-      }
-    end
 
     # Configuration for the application, engines, and railties goes here.
     #
