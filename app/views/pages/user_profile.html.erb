@@ -18,30 +18,26 @@
     <% end %>
   </div>
 
-
-
   <div class="intern">
     <h5>My thoughts</h5>
-    <div class="card-big">
+    <a href="<%= edit_user_registration_path %>" class="card-big">
       <div class="user-description">
-        <h5> <%= @user.description %></h5>
+        <h5><%= @user.description %></h5>
       </div>
-    </div>
+    </a>
   </div>
-
 
   <div class="intern">
     <h5>My details</h5>
-    <div class= "card-big">
+    <a href="<%= edit_user_registration_path %>" class="card-big">
       <div class="user-birthday">
         <p>Birthday: <%= @user.birthday %></p>
       </div>
-
       <div class="user-address">
         <p>Adress: <%= @user.address %></p>
         <p>Email: <%= @user.email %></p>
       </div>
-    </div>
+    </a>
 
 <br>
 
